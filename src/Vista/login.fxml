@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="510.0" fitWidth="741.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -27,12 +27,12 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </PasswordField>
-      <Button layoutX="431.0" layoutY="327.0" mnemonicParsing="false"  prefHeight="28.0" prefWidth="247.0" style="-fx-background-color: #AA9338;" text="Iniciar sesion" textAlignment="CENTER" textFill="#fcfcfa">
+      <Button layoutX="431.0" layoutY="327.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="247.0" style="-fx-background-color: #AA9338;" text="Iniciar sesion" textAlignment="CENTER" textFill="#fcfcfa">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="523.0" layoutY="430.0"  prefHeight="17.0" prefWidth="80.0" style="-fx-background-color: #695222;" text="REGISTRARSE" textFill="WHITE">
+      <Label layoutX="523.0" layoutY="430.0" prefHeight="17.0" prefWidth="80.0" style="-fx-background-color: #695222;" text="REGISTRARSE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
