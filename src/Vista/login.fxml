@@ -8,21 +8,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="780.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="612.0" fitWidth="783.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/Desktop%20-%201.png" />
          </image>
       </ImageView>
-      <TextField layoutX="460.0" layoutY="207.0" prefHeight="26.0" prefWidth="186.0" promptText="Ingrese su usuario" style="-fx-background-color: #181A1E;" />
-      <TextField layoutX="460.0" layoutY="275.0" prefHeight="26.0" prefWidth="247.0" promptText="Ingrese su contraseña" style="-fx-background-color: #181A1E;" />
+      <TextField layoutX="460.0" layoutY="207.0" prefHeight="26.0" prefWidth="186.0" promptText="Ingresa tu usuario" style="-fx-background-color: #181A1E;" />
+      <TextField layoutX="460.0" layoutY="275.0" prefHeight="26.0" prefWidth="247.0" promptText="Ingresa tu contraseña" style="-fx-background-color: #181A1E;" />
       <Label layoutX="545.0" layoutY="453.0" prefHeight="19.0" prefWidth="86.0" style="-fx-background-color: #695222;" text="REGISTRARSE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="455.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="258.0" style="-fx-background-color: #B7A32B;" text="Iniciar Secion " />
+      <Button layoutX="455.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="258.0" style="-fx-background-color: #B7A32B;" text="Iniciar Sesión " />
    </children>
 </AnchorPane>
