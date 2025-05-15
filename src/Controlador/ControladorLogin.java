@@ -14,10 +14,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
 /**
  *
  * @author DELL
@@ -38,6 +40,16 @@ public class ControladorLogin {
     public TextField usuarioCrear;
     @FXML
     public TextField contraseñaCrear;
+    @FXML
+    public ComboBox<String> comboBox;
+    @FXML
+    public TextField nombre;
+    @FXML
+    public TextField correo;
+    @FXML
+    public TextField confirmarContraseña;
+    @FXML
+    public CheckBox checkbox;
 
     public void setListaUsuarios(PilaUsuarios lista) {
         pila = lista;
@@ -60,15 +72,22 @@ public class ControladorLogin {
     public void registrarUsuario(ActionEvent event) throws IOException {
         String usuario = usuarioCrear.getText().trim();
         String contraseña = contraseñaCrear.getText().trim();
+        String nom = nombre.getText().trim();
+        String Correo = correo.getText().trim();
+        String confirmarContra = confirmarContraseña.getText().trim();
 
-        if (usuario.isEmpty() || contraseña.isEmpty()) {
-            mostrarAlerta("Error", "Todos los campos son obligatorios", AlertType.ERROR);
-            return;
+        if (usuario.isEmpty() || contraseña.isEmpty() || nom.isEmpty()
+                || Correo.isEmpty() || confirmarContra.isEmpty()) {
+            mostrarAlerta("Error", "Debe llenar todos los campos", AlertType.ERROR);
+        } else if (!contraseña.equals(confirmarContra)) {
+            mostrarAlerta("Error", "Las contraseñas no coinciden", AlertType.ERROR);
+        } else if (!checkbox.isSelected()) {
+            mostrarAlerta("Error", "Debe aceptar los terminos y condiciones", AlertType.ERROR);
+        } else {
+            pila.aggUsuario(usuario, contraseña);
+            mostrarAlerta("Éxito", "Usuario registrado correctamente", AlertType.INFORMATION);
+            cambiarEscena(event, "/Vista/login.fxml");
         }
-
-        pila.aggUsuario(usuario, contraseña);
-        mostrarAlerta("Éxito", "Usuario registrado correctamente", AlertType.INFORMATION);
-        cambiarEscena(event, "/Vista/login.fxml");
     }
 
     @FXML
@@ -87,14 +106,32 @@ public class ControladorLogin {
         String contra = contraseñaLogin.getText().trim();
 
         if (user.isEmpty() || contra.isEmpty()) {
-            mostrarAlerta("Error", "Ingrese usuario y contraseña", AlertType.ERROR);
-            return;
+            mostrarAlerta("Error", "Debe llenar todos los campos", AlertType.ERROR);
         }
         if (pila.validacion(user, contra)) {
-            mostrarAlerta("Exito","Inicio de sesion exitoso", AlertType.CONFIRMATION);
+            mostrarAlerta("Exito", "Inicio de sesion exitoso", AlertType.CONFIRMATION);
 
         } else {
             mostrarAlerta("Error", "Cuenta no encontrada", AlertType.ERROR);
+        }
+    }
+
+    @FXML
+    public void initialize() {
+        try {
+            if (comboBox != null) {
+                comboBox.getItems().clear();
+                comboBox.getItems().addAll(
+                        "Colombia",
+                        "Argentina",
+                        "Estados Unidos",
+                        "Brasil",
+                        "España"
+                );
+            }
+        } catch (Exception e) {
+            System.err.println("Error al cargar ComboBox: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

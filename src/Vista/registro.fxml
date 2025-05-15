@@ -23,14 +23,14 @@
             <Image url="@../Imagenes/Form.png" />
          </image>
       </ImageView>
-      <TextField layoutX="448.0" layoutY="161.0" prefHeight="25.0" prefWidth="256.0" promptText="Nombre completo" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
-      <TextField layoutX="448.0" layoutY="201.0" prefHeight="25.0" prefWidth="256.0" promptText="Correo Electronico" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
+      <TextField fx:id="nombre" layoutX="448.0" layoutY="161.0" prefHeight="25.0" prefWidth="256.0" promptText="Nombre completo" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
+      <TextField fx:id="correo" layoutX="448.0" layoutY="201.0" prefHeight="25.0" prefWidth="256.0" promptText="Correo Electronico" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
       <TextField fx:id="usuarioCrear" layoutX="448.0" layoutY="237.0" prefHeight="25.0" prefWidth="256.0" promptText="Nombre de usuario" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
       <TextField fx:id="contraseñaCrear" layoutX="448.0" layoutY="277.0" prefHeight="25.0" prefWidth="256.0" promptText="Contraseña" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
-      <TextField layoutX="448.0" layoutY="316.0" prefHeight="25.0" prefWidth="256.0" promptText="Confirmar contraseña" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
+      <TextField fx:id="confirmarContraseña" layoutX="448.0" layoutY="316.0" prefHeight="25.0" prefWidth="256.0" promptText="Confirmar contraseña" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
       <Label alignment="CENTER" layoutX="448.0" layoutY="352.0" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #181A1E;" text="Pais" textAlignment="CENTER" textFill="#909090" />
-      <ComboBox layoutX="507.0" layoutY="352.0" prefHeight="25.0" prefWidth="199.0" style="-fx-background-color: #181A1E;" />
-      <CheckBox layoutX="448.0" layoutY="389.0" mnemonicParsing="false" style="-fx-background-color: #695222;" />
+      <ComboBox fx:id="comboBox" layoutX="507.0" layoutY="352.0" prefHeight="25.0" prefWidth="199.0" promptText="Seleccione" style="-fx-text-fill: #8B8C8E; -fx-background-color: #181A1E;" />
+      <CheckBox fx:id="checkbox" layoutX="448.0" layoutY="389.0" mnemonicParsing="false" style="-fx-background-color: #695222;" />
       <Button layoutX="445.0" layoutY="421.0" mnemonicParsing="false" onAction="#registrarUsuario" prefHeight="32.0" prefWidth="263.0" style="-fx-background-color: #BBA926;" text="Registrarse" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
