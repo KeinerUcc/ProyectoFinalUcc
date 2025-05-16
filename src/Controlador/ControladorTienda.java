@@ -21,19 +21,19 @@ import javafx.stage.Stage;
 public class ControladorTienda {
 
     @FXML
-    Button btnCambiarAProductos;
+    public Button btnCambiarAProductos;
     @FXML
-    Button btnCambiarAProductos2;
+    public Button btnCambiarAProductos2;
     @FXML
-    Button btnCambiarAProductos3;
+    public Button btnCambiarAProductos3;
     @FXML
-    Button btnCambiarAProductos4;
+   public Button btnCambiarAProductos4;
     @FXML
-    Button btnSiguiente1;
+    public Button btnSiguiente1;
     @FXML
-    Button btnSiguiente2;
+    public Button btnSiguiente2;
     @FXML
-    Button btnSiguiente3;
+    public Button btnSiguiente3;
 
     public void cambiarEscena(ActionEvent event, String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
