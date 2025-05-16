@@ -19,31 +19,33 @@ import javafx.stage.Stage;
  * @author DELL
  */
 public class ControladorTienda {
+
     @FXML
     Button btnCambiarAProductos;
-    @FXML 
+    @FXML
     Button btnCambiarAProductos2;
-    @FXML 
+    @FXML
     Button btnCambiarAProductos3;
-    @FXML 
+    @FXML
     Button btnCambiarAProductos4;
     @FXML
-    Button btnSiguiente1; 
+    Button btnSiguiente1;
     @FXML
-    Button btnSiguiente2; 
+    Button btnSiguiente2;
     @FXML
-    Button btnSiguiente3; 
-    
+    Button btnSiguiente3;
+
     public void cambiarEscena(ActionEvent event, String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();
-
-        //ControladorTienda controlador = loader.getController();
-        //controlador.setListaUsuarios(this.pila);
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void cambiarAProductos(ActionEvent event) throws IOException {
+        cambiarEscena(event, "/Vista/Productos.fxml");
     }
 }
