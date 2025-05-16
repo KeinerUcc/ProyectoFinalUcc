@@ -5,6 +5,7 @@
 package Controlador;
 
 import java.io.IOException;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -96,7 +98,7 @@ public class ControladorLogin {
     }
 
     @FXML
-    public void cambiarSceneIniciarSesion(ActionEvent event) throws IOException {
+    public void cambiarSceneIniciarSesion(MouseEvent event) throws IOException {
         cambiarEscena(event, "/Vista/login.fxml");
     }
 
@@ -107,12 +109,31 @@ public class ControladorLogin {
 
         if (user.isEmpty() || contra.isEmpty()) {
             mostrarAlerta("Error", "Debe llenar todos los campos", AlertType.ERROR);
-        }
-        if (pila.validacion(user, contra)) {
-            mostrarAlerta("Exito", "Inicio de sesion exitoso", AlertType.CONFIRMATION);
+        } else if (pila.validacion(user, contra)) {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirmación");
+            alert.setContentText("Inicio de sesion exitoso, ¿deseas continuar?");
 
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                Stage stageLogin = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/inicio.fxml"));
+                Parent root = loader.load();
+
+                Stage stageTienda = new Stage();
+                stageTienda.setScene(new Scene(root));
+                stageTienda.show();
+
+                stageLogin.close();
+            } else {
+                usuarioLogin.clear();
+                contraseñaLogin.clear();
+            }
         } else {
             mostrarAlerta("Error", "Cuenta no encontrada", AlertType.ERROR);
+            usuarioLogin.clear();
+            contraseñaLogin.clear();
         }
     }
 
