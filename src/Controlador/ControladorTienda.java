@@ -54,27 +54,27 @@ public class ControladorTienda {
     }
 
     public void añadirCarrito(Producto producto) {
-        Nodo<Producto> nuevoNodo = new Nodo(producto);
+        Nodo<Producto> p = new Nodo(producto);
 
         if (ControladorPrincipal != null) {
             if (ControladorPrincipal.cabezaCarrito == null) {
-                ControladorPrincipal.cabezaCarrito = nuevoNodo;
+                ControladorPrincipal.cabezaCarrito = p;
             } else {
-                Nodo<Producto> actual = ControladorPrincipal.cabezaCarrito;
-                while (actual.sig != null) {
-                    actual = actual.sig;
+                Nodo<Producto> q = ControladorPrincipal.cabezaCarrito;
+                while (q.sig != null) {
+                    q = q.sig;
                 }
-                actual.sig = nuevoNodo;
+                q.sig = p;
             }
         } else {
             if (cabezaCarrito == null) {
-                cabezaCarrito = nuevoNodo;
+                cabezaCarrito = p;
             } else {
-                Nodo<Producto> actual = cabezaCarrito;
-                while (actual.sig != null) {
-                    actual = actual.sig;
+                Nodo<Producto> a = cabezaCarrito;
+                while (a.sig != null) {
+                    a = al.sig;
                 }
-                actual.sig = nuevoNodo;
+                a.sig = p;
             }
         }
     }
