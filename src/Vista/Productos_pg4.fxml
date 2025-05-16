@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1700.0" prefWidth="0.0">
          <children>
@@ -136,17 +136,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="229.0" layoutY="1637.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="22.0" text="Button">
+            <Button fx:id="btnCambiarAProductos" layoutX="229.0" layoutY="1637.0" mnemonicParsing="false" onAction="#cambiarAProductos" opacity="0.0" prefHeight="26.0" prefWidth="22.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="297.0" layoutY="1637.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="14.0" text="Button">
+            <Button fx:id="btnCambiarAProductos3" layoutX="297.0" layoutY="1637.0" mnemonicParsing="false" onAction="#cambiarAProductos3" opacity="0.0" prefHeight="26.0" prefWidth="14.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="261.0" layoutY="1637.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="16.0" text="Button">
+            <Button fx:id="btnCambiarAProductos2" layoutX="261.0" layoutY="1637.0" mnemonicParsing="false" onAction="#cambiarAProductos2" opacity="0.0" prefHeight="26.0" prefWidth="16.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
