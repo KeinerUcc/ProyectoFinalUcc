@@ -48,4 +48,19 @@ public class ControladorTienda {
     public void cambiarAProductos(ActionEvent event) throws IOException {
         cambiarEscena(event, "/Vista/Productos.fxml");
     }
+
+    @FXML
+    public void cambiarAProductos2(ActionEvent event) throws IOException {
+        cambiarEscena(event, "/Vista/Productos_pg2.fxml");
+    }
+
+    @FXML
+    public void cambiarAProductos3(ActionEvent event) throws IOException {
+        cambiarEscena(event, "/Vista/Productos_pg3.fxml");
+    }
+
+    @FXML
+    public void cambiarAProductos4(ActionEvent event) throws IOException {
+        cambiarEscena(event, "/Vista/Productos_pg4.fxml");
+    }
 }
