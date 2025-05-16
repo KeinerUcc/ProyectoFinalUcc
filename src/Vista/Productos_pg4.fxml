@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1700.0" prefWidth="0.0">
+         <children>
+            <ImageView fitHeight="1700.0" fitWidth="777.0" layoutX="-2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/p4.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="261.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="22.0" prefWidth="56.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="329.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="15.0" prefWidth="85.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="565.0" layoutY="38.0" mnemonicParsing="false" opacity="0.0" prefHeight="41.0" prefWidth="46.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="615.0" layoutY="37.0" mnemonicParsing="false" opacity="0.0" prefHeight="42.0" prefWidth="40.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="659.0" layoutY="39.0" mnemonicParsing="false" opacity="0.0" prefHeight="38.0" prefWidth="43.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="711.0" layoutY="37.0" mnemonicParsing="false" opacity="0.0" prefHeight="42.0" prefWidth="42.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="50.0" layoutY="709.0" mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="164.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="293.0" layoutY="709.0" mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="167.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="540.0" layoutY="711.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="170.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="48.0" layoutY="1125.0" mnemonicParsing="false" opacity="0.0" prefHeight="21.0" prefWidth="168.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="297.0" layoutY="1129.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="170.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="545.0" layoutY="1129.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="169.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="47.0" layoutY="1540.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="169.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="297.0" layoutY="1540.0" mnemonicParsing="false" opacity="0.0" prefHeight="8.0" prefWidth="170.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="544.0" layoutY="1540.0" mnemonicParsing="false" opacity="0.0" prefHeight="10.0" prefWidth="170.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="183.0" layoutY="754.0" mnemonicParsing="false" opacity="0.0" prefHeight="29.0" prefWidth="36.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="434.0" layoutY="757.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="31.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="680.0" layoutY="754.0" mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="34.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="192.0" layoutY="1159.0" mnemonicParsing="false" opacity="0.0" prefHeight="24.0" prefWidth="34.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="434.0" layoutY="1160.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="36.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="685.0" layoutY="1161.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="33.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="186.0" layoutY="1584.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="30.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="430.0" layoutY="1582.0" mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="38.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="681.0" layoutY="1584.0" mnemonicParsing="false" opacity="0.0" prefHeight="31.0" prefWidth="34.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="229.0" layoutY="1637.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="22.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="297.0" layoutY="1637.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="14.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="261.0" layoutY="1637.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="16.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
