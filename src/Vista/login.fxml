@@ -16,8 +16,8 @@
             <Image url="@../Imagenes/Desktop%20-%201.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usuarioLogin" layoutX="460.0" layoutY="207.0" prefHeight="26.0" prefWidth="186.0" promptText="Ingresa tu usuario" style="-fx-background-color: #181A1E;" />
-      <TextField fx:id="contraseñaLogin" layoutX="460.0" layoutY="275.0" prefHeight="26.0" prefWidth="247.0" promptText="Ingresa tu contraseña" style="-fx-background-color: #181A1E;" />
+      <TextField fx:id="usuarioLogin" layoutX="460.0" layoutY="207.0" prefHeight="26.0" prefWidth="186.0" promptText="Ingresa tu usuario" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
+      <TextField fx:id="contraseñaLogin" layoutX="460.0" layoutY="275.0" prefHeight="26.0" prefWidth="247.0" promptText="Ingresa tu contraseña" style="-fx-background-color: #181A1E; -fx-text-fill: #8B8C8E;" />
       <Label layoutX="545.0" layoutY="453.0" onMouseClicked="#cambiarSceneCrearCuenta" prefHeight="19.0" prefWidth="86.0" style="-fx-background-color: #695222;" text="REGISTRARSE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
