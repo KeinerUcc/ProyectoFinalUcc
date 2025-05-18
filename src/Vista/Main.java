@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author DELL
  */
-public class LoginApp extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {

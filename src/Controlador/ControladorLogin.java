@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Modelo.*;
 import java.io.IOException;
 import java.util.Optional;
 import javafx.event.ActionEvent;
