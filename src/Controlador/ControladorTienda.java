@@ -19,7 +19,7 @@ import Modelo.*;
  *
  * @author DELL
  */
-public class ControladorTienda {
+public class ControladorTienda extends Productos {
 
     public Nodo<Producto> cabezaCarrito;
 
