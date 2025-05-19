@@ -72,7 +72,7 @@ public class ControladorTienda {
             } else {
                 Nodo<Producto> a = cabezaCarrito;
                 while (a.sig != null) {
-                    a = al.sig;
+                    a = a.sig;
                 }
                 a.sig = p;
             }
