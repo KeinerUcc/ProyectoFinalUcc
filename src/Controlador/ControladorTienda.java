@@ -22,6 +22,7 @@ import Modelo.*;
 public class ControladorTienda extends Productos {
 
     public Nodo<Producto> cabezaCarrito;
+    public Nodo<Producto> inicioHistorial;
 
     public ControladorTienda ControladorPrincipal;
 
@@ -81,7 +82,7 @@ public class ControladorTienda extends Productos {
 
     public void eliminarDelCarrito(Producto producto) {
         if (cabezaCarrito == null) {
-   
+
         }
         Nodo<Producto> del = null;
         Nodo<Producto> p = cabezaCarrito;
@@ -105,6 +106,32 @@ public class ControladorTienda extends Productos {
         }
         del.sig = null;
         del.dato = null;
+    }
+
+    public void añadirHistorial(Producto producto) {
+        Nodo<Producto> nuevoNodo = new Nodo<>(producto);
+
+        if (ControladorPrincipal != null) {
+            if (ControladorPrincipal.inicioHistorial == null) {
+                ControladorPrincipal.inicioHistorial = nuevoNodo;
+            } else {
+                Nodo<Producto> actual = ControladorPrincipal.inicioHistorial;
+                while (actual.sig != null) {
+                    actual = actual.sig;
+                }
+                actual.sig = nuevoNodo;
+            }
+        } else {
+            if (inicioHistorial == null) {
+                inicioHistorial = nuevoNodo;
+            } else {
+                Nodo<Producto> actual = inicioHistorial;
+                while (actual.sig != null) {
+                    actual = actual.sig;
+                }
+                actual.sig = nuevoNodo;
+            }
+        }
     }
 
     public void cambiarEscena(ActionEvent event, String fxml) throws IOException {
