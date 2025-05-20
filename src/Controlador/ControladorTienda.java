@@ -44,6 +44,10 @@ public class ControladorTienda extends Productos {
         cabezaCarrito = null;
     }
 
+    public void setListaCarrito(Nodo<Producto> cabeza) {
+        this.cabezaCarrito = cabeza;
+    }
+
     public Nodo<Producto> getUltimo() {
         if (cabezaCarrito == null) {
             return null;
@@ -69,27 +73,46 @@ public class ControladorTienda extends Productos {
     }
 
     public void añadirCarrito(Producto producto) {
-        Nodo<Producto> lista = (ControladorPrincipal != null) ? ControladorPrincipal.cabezaCarrito : cabezaCarrito;
-        Nodo<Producto> actual = lista;
 
-        while (actual != null) {
-            if (actual.dato.equals(producto)) {
-                actual.cantidad++; 
-                return;
-            }
-            actual = actual.sig;
+        Nodo<Producto> lista;
+        if (ControladorPrincipal != null) {
+            lista = ControladorPrincipal.cabezaCarrito;
+        } else {
+            lista = cabezaCarrito;
         }
 
-        // Si no existe, añadirlo con cantidad 1
-        Nodo<Producto> nuevo = new Nodo<>(producto);
-        nuevo.cantidad = 1;
+        Nodo<Producto> p = lista;
+        while (p != null) {
+            if (p.dato.equals(producto)) {
+                p.cantidad++;
+                return;
+            }
+            p = p.sig;
+        }
+
+        Nodo<Producto> nuevoNodo = new Nodo(producto);
+        nuevoNodo.cantidad = 1;
 
         if (ControladorPrincipal != null) {
-            nuevo.sig = ControladorPrincipal.cabezaCarrito;
-            ControladorPrincipal.cabezaCarrito = nuevo;
+            if (ControladorPrincipal.cabezaCarrito == null) {
+                ControladorPrincipal.cabezaCarrito = nuevoNodo;
+            } else {
+                Nodo<Producto> ultimo = ControladorPrincipal.cabezaCarrito;
+                while (ultimo.sig != null) {
+                    ultimo = ultimo.sig;
+                }
+                ultimo.sig = nuevoNodo;
+            }
         } else {
-            nuevo.sig = cabezaCarrito;
-            cabezaCarrito = nuevo;
+            if (cabezaCarrito == null) {
+                cabezaCarrito = nuevoNodo;
+            } else {
+                Nodo<Producto> ultimo = cabezaCarrito;
+                while (ultimo.sig != null) {
+                    ultimo = ultimo.sig;
+                }
+                ultimo.sig = nuevoNodo;
+            }
         }
     }
 
@@ -122,7 +145,7 @@ public class ControladorTienda extends Productos {
     }
 
     public void añadirHistorial(Producto producto) {
-        Nodo<Producto> nuevoNodo = new Nodo<>(producto);
+        Nodo<Producto> nuevoNodo = new Nodo(producto);
 
         if (ControladorPrincipal != null) {
             if (ControladorPrincipal.inicioHistorial == null) {
@@ -163,10 +186,42 @@ public class ControladorTienda extends Productos {
         añadirCarrito(AnilloRoyalStar);
     }
 
+    public void PulseraCrazy() {
+        añadirCarrito(PulseraCrazy);
+    }
+
+    public void AretesNudoGold() {
+        añadirCarrito(AretesNudoGold);
+    }
+
+    public void CadenaItaliana() {
+        añadirCarrito(CadenaItaliana);
+    }
+
+    public void CollarGalaxy() {
+        añadirCarrito(CollarGalaxy);
+    }
+
+    public void PulseraVanCleef() {
+        añadirCarrito(PulseraVanCleef);
+    }
+
+    public void DijeMar() {
+        añadirCarrito(DijeMar);
+    }
+
+    public void RelojConquest() {
+        añadirCarrito(RelojConquest);
+    }
+
+    public void DijeOsoPanda() {
+        añadirCarrito(DijeOsoPanda);
+    }
+
     @FXML
     public void mostrarCarrito() {
-        VBox contenidoCarrito = new VBox(10);
-        contenidoCarrito.setPadding(new Insets(15));
+        VBox contenidoCarrito = new VBox(15);
+        contenidoCarrito.setPadding(new Insets(20));
 
         if (cabezaCarrito == null) {
             contenidoCarrito.getChildren().add(new Label("El carrito está vacío"));
@@ -175,32 +230,30 @@ public class ControladorTienda extends Productos {
             while (actual != null) {
                 if (actual.dato != null) {
                     final Producto productoActual = actual.dato;
-                    final Nodo<Producto> nodoActual = actual; // Variable final para el lambda
+                    final Nodo<Producto> nodoActual = actual;
 
-                    HBox item = new HBox(15);
+                    HBox item = new HBox(12);
                     item.setAlignment(Pos.CENTER_LEFT);
 
                     // Imagen
                     ImageView img = new ImageView(productoActual.imagen);
-                    img.setFitHeight(60);
-                    img.setFitWidth(60);
+                    img.setFitHeight(100);
+                    img.setFitWidth(100);
 
-                    // Info (nombre + precio unitario)
                     VBox info = new VBox(5);
                     Label nombreLabel = new Label(productoActual.nombre);
                     nombreLabel.setStyle("-fx-font-weight: bold;");
                     Label precioUnitario = new Label(String.format("$%,.2f c/u", productoActual.precio));
                     precioUnitario.setStyle("-fx-text-fill: #666;");
 
-                    // Controles de cantidad (+/-)
-                    HBox cantidadBox = new HBox(10);
+                    HBox cantidadBox = new HBox(5);
                     cantidadBox.setAlignment(Pos.CENTER_LEFT);
 
                     Button btnMenos = new Button("-");
-                    btnMenos.setStyle("-fx-background-color: #ff4444; -fx-text-fill: white; -fx-min-width: 30;");
+                    btnMenos.setStyle("-fx-background-color: #ff4444; -fx-text-fill: white; -fx-min-width: 20;");
                     btnMenos.setOnAction(e -> {
                         if (nodoActual.cantidad > 1) {
-                            nodoActual.cantidad--; // Usamos nodoActual en lugar de actual
+                            nodoActual.cantidad--; 
                             mostrarCarrito();
                         }
                     });
@@ -208,21 +261,19 @@ public class ControladorTienda extends Productos {
                     Label lblCantidad = new Label("Cant: " + nodoActual.cantidad);
 
                     Button btnMas = new Button("+");
-                    btnMas.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-min-width: 30;");
+                    btnMas.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-min-width: 20;");
                     btnMas.setOnAction(e -> {
-                        nodoActual.cantidad++; // Usamos nodoActual
+                        nodoActual.cantidad++; 
                         mostrarCarrito();
                     });
 
                     cantidadBox.getChildren().addAll(btnMenos, lblCantidad, btnMas);
 
-                    // Precio total (precio * cantidad)
                     Label precioTotal = new Label(String.format("$%,.2f", productoActual.precio * nodoActual.cantidad));
                     precioTotal.setStyle("-fx-text-fill: #2e8b57; -fx-font-weight: bold;");
 
                     info.getChildren().addAll(nombreLabel, precioUnitario, cantidadBox);
 
-                    // Botón eliminar
                     Button btnEliminar = new Button("Eliminar");
                     btnEliminar.setStyle("-fx-background-color: #ff4444; -fx-text-fill: white;");
                     btnEliminar.setOnAction(e -> {
@@ -237,7 +288,6 @@ public class ControladorTienda extends Productos {
                 actual = actual.sig;
             }
 
-            // Footer (total + botón comprar)
             HBox footer = new HBox(20);
             footer.setAlignment(Pos.CENTER_RIGHT);
             footer.setPadding(new Insets(20, 10, 10, 0));
@@ -277,6 +327,8 @@ public class ControladorTienda extends Productos {
     public void cambiarEscena(ActionEvent event, String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();
+        ControladorTienda Controlador = loader.getController();
+        Controlador.setListaCarrito(this.cabezaCarrito);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

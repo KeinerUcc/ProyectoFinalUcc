@@ -17,7 +17,7 @@
                   <Image url="@../Imagenes/P1.png" />
                </image>
             </ImageView>
-            <Pane fx:id="panelPostCarrito2" opacity="0.0" prefHeight="1700.0" prefWidth="776.0" style="-fx-background-color: black;" />
+            <Pane fx:id="panelPostCarrito2" onMouseClicked="#volver" opacity="0.0" prefHeight="1700.0" prefWidth="776.0" style="-fx-background-color: black;" />
             <Button layoutX="268.0" layoutY="48.0" mnemonicParsing="false" opacity="0.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -53,42 +53,42 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="304.0" layoutY="709.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="167.0" text="Button">
+            <Button layoutX="304.0" layoutY="709.0" mnemonicParsing="false" onAction="#PulseraCrazy" opacity="0.0" prefHeight="26.0" prefWidth="167.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="551.0" layoutY="709.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="168.0" text="Button">
+            <Button layoutX="551.0" layoutY="709.0" mnemonicParsing="false" onAction="#AretesNudoGold" opacity="0.0" prefHeight="26.0" prefWidth="168.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="58.0" layoutY="1115.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="168.0" text="Button">
+            <Button layoutX="58.0" layoutY="1115.0" mnemonicParsing="false" onAction="#CadenaItaliana" opacity="0.0" prefHeight="26.0" prefWidth="168.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="304.0" layoutY="1115.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="168.0" text="Button">
+            <Button layoutX="304.0" layoutY="1115.0" mnemonicParsing="false" onAction="#CollarGalaxy" opacity="0.0" prefHeight="26.0" prefWidth="168.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="551.0" layoutY="1117.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
+            <Button layoutX="551.0" layoutY="1117.0" mnemonicParsing="false" onAction="#PulseraVanCleef" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="54.0" layoutY="1520.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
+            <Button layoutX="54.0" layoutY="1520.0" mnemonicParsing="false" onAction="#DijeMar" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="303.0" layoutY="1520.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
+            <Button layoutX="303.0" layoutY="1520.0" mnemonicParsing="false" onAction="#RelojConquest" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="550.0" layoutY="1523.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="170.0" text="Button">
+            <Button layoutX="550.0" layoutY="1523.0" mnemonicParsing="false" onAction="#DijeOsoPanda" opacity="0.0" prefHeight="27.0" prefWidth="170.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
