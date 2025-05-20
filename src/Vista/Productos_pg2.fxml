@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
   <content>
@@ -16,6 +17,7 @@
                   <Image url="@../Imagenes/P2.png" />
                </image>
             </ImageView>
+            <Pane fx:id="panelPostCarrito2" layoutX="10.0" layoutY="10.0" onMouseClicked="#volver" opacity="0.0" prefHeight="1700.0" prefWidth="776.0" style="-fx-background-color: black;" />
             <Button layoutX="261.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="22.0" prefWidth="56.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -41,7 +43,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="714.0" layoutY="33.0" mnemonicParsing="false" opacity="0.0" prefHeight="42.0" prefWidth="42.0" text="Button">
+            <Button layoutX="714.0" layoutY="33.0" mnemonicParsing="false" onAction="#mostrarCarrito" opacity="0.0" prefHeight="42.0" prefWidth="42.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -156,6 +158,25 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Pane fx:id="PaneCarrito" layoutX="382.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="418.0" style="-fx-background-color: black;" visible="false">
+               <children>
+                  <ImageView fitHeight="75.0" fitWidth="395.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/carrito.png" />
+                     </image>
+                  </ImageView>
+                  <ScrollPane fx:id="ScrollPaneCarrito" layoutX="-1.0" layoutY="102.0" prefHeight="557.0" prefWidth="405.0" style="-fx-background-color: black;">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="556.0" prefWidth="419.0" style="-fx-background-color: black;">
+                           <children>
+                              <Button layoutX="262.0" layoutY="498.0" mnemonicParsing="false" style="-fx-background-color: #634A2C;" text="FINALIZAR COMPRA" textFill="WHITE" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+                  <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#volver" opacity="0.0" prefHeight="25.0" prefWidth="72.0" />
+               </children>
+            </Pane>
          </children></AnchorPane>
   </content>
 </ScrollPane>

@@ -217,6 +217,88 @@ public class ControladorTienda extends Productos {
     public void DijeOsoPanda() {
         añadirCarrito(DijeOsoPanda);
     }
+    public void AnilloChaosDouble(){
+        añadirCarrito(AnilloChaosDouble);
+    }
+    public void CollarFinobolit(){
+        añadirCarrito(CollarFinobolit);
+    }
+    public void Aretescelestial(){
+        añadirCarrito(Aretescelestial);
+    }
+    public void CadenaEsclava(){
+        añadirCarrito(CadenaEsclava);
+    }
+    public void PulseraArrastrada(){
+        añadirCarrito(PulseraArrastrada);
+    }
+    public void PulserasCombLuxury(){
+        añadirCarrito(PulserasCombLuxury);
+    }
+    public void RelojTissot(){
+        añadirCarrito(RelojTissot);
+    }
+    public void ComboAretesSweet(){
+        añadirCarrito(ComboAretesSweet);
+    }
+    public void DijeOsito(){
+        añadirCarrito(DijeOsito);
+    }
+    public void AnilloGoldenLuz(){
+        añadirCarrito(AnilloGoldenLuz);
+    }
+    public void DijeToyota(){
+        añadirCarrito(DijeToyota);
+    }
+    public void RelojDolceVita(){
+        añadirCarrito(RelojDolceVita);
+    }
+    public void CadenaGold(){
+        añadirCarrito(CadenaGold);
+    }
+    public void AnilloGoldenluz(){
+        añadirCarrito(AnilloGoldenluz);
+    }
+    public void CollarRama(){
+        añadirCarrito(CollarRama);
+    }
+    public void AretesCoquet(){
+        añadirCarrito(AretesCoquet);
+    }
+    public void CollarPlataMain(){
+        añadirCarrito(CollarPlataMain);
+    }
+    public void RelojLadyAutomatic(){
+        añadirCarrito(RelojLadyAutomatic);
+    }
+    public void CollarCrisFlower(){
+        añadirCarrito(CollarCrisFlower);
+    }
+    public void DijeOsitoenPie(){
+        añadirCarrito(DijeOsitoenPie);
+    }
+    public void AnilloGreenPow(){
+        añadirCarrito(AnilloGreenPow);
+    }
+    public void CollarLuzFugaz(){
+        añadirCarrito(CollarLuzFugaz);
+    }
+    public void AretesBoldHuggies(){
+        añadirCarrito(AretesBoldHuggies);
+    }
+    public void CadenaSingapur(){
+        añadirCarrito(CadenaSingapur);
+    }
+    public void AnilloFlowers(){
+        añadirCarrito(AnilloFlowers);
+    }
+    public void PulseraDestello(){
+        añadirCarrito(PulseraDestello);
+    }
+    public void CollarPearl(){
+        añadirCarrito(CollarPearl);
+    }
+    
 
     @FXML
     public void mostrarCarrito() {
