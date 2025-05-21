@@ -2,11 +2,13 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
   <content>
@@ -17,7 +19,6 @@
                   <Image url="@../Imagenes/p4.png" />
                </image>
             </ImageView>
-            <Pane fx:id="panelPostCarrito2" layoutX="10.0" layoutY="10.0" onMouseClicked="#volver" opacity="0.0" prefHeight="1700.0" prefWidth="776.0" style="-fx-background-color: black;" />
             <Button layoutX="261.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="22.0" prefWidth="56.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -172,6 +173,11 @@
                   <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#volver" opacity="0.0" prefHeight="25.0" prefWidth="72.0" />
                </children>
             </Pane>
+            <Label fx:id="lblCantidadCarrito" alignment="CENTER_RIGHT" layoutX="739.0" layoutY="16.0" prefHeight="28.0" prefWidth="27.0" text="0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </content>
 </ScrollPane>
