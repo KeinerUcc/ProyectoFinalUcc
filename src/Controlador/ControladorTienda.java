@@ -14,6 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import Modelo.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -25,6 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 
 /**
  *
@@ -271,7 +277,7 @@ public class ControladorTienda extends Productos {
                     btnEliminar.setStyle("-fx-background-color: #ff4444; -fx-text-fill: white;");
                     btnEliminar.setOnAction(e -> {
                         eliminarDelCarrito(productoActual);
-                        mostrarCarrito(); 
+                        mostrarCarrito();
                     });
 
                     info.getChildren().addAll(nombreLabel, cantidadBox);
@@ -308,7 +314,7 @@ public class ControladorTienda extends Productos {
                         }
                         productoActual = productoActual.sig;
                     }
-
+                    guardarHistorialEnArchivo();
                     new Alert(Alert.AlertType.INFORMATION,
                             "¡Compra exitosa! Total: $" + calcularTotal()).showAndWait();
 
@@ -368,11 +374,11 @@ public class ControladorTienda extends Productos {
                             calculador = calculador.sig;
                         }
 
-                        HBox item = new HBox(30);  
+                        HBox item = new HBox(30);
                         item.setAlignment(Pos.CENTER_LEFT);
                         item.setStyle("-fx-padding: 25; -fx-background-color: #AA9866; "
                                 + "-fx-background-radius: 15; -fx-min-height: 200;");
-                        
+
                         ImageView img = new ImageView(producto.imagen);
                         img.setFitHeight(200);
                         img.setFitWidth(200);
@@ -427,6 +433,53 @@ public class ControladorTienda extends Productos {
             scrollHistorial.setContent(contenidoHistorial);
             scrollHistorial.setStyle("-fx-background: black; -fx-background-color: transparent;");
             scrollHistorial.setFitToWidth(true);
+        }
+    }
+
+    @FXML
+    public void guardarHistorialEnArchivo() {
+        // Crear un DirectoryChooser para que el usuario elija la carpeta
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Seleccionar Carpeta para Guardar el Historial");
+
+        // Configurar la carpeta inicial (opcional)
+        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+
+        // Mostrar el diálogo y obtener la carpeta seleccionada
+        Stage stage = (Stage) ScrollPaneCarrito.getScene().getWindow();
+        File selectedDirectory = directoryChooser.showDialog(stage);
+
+        if (selectedDirectory != null) {
+            // Ruta fija del archivo (siempre el mismo nombre)
+            String rutaCompleta = selectedDirectory.getAbsolutePath() + "/historial_compras.txt";
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaCompleta, true))) {  // ¡Modo append (true)!
+                // Separador entre entradas (opcional)
+                writer.write("\n=== NUEVA ENTRADA === " + new Date() + "\n\n");
+
+                Nodo<Producto> actual = cabezaCarrito;
+                while (actual != null) {
+                    writer.write(String.format(
+                            "Producto: %s | Cantidad: %d | Precio: $%,.2f | Total: $%,.2f\n",
+                            actual.dato.nombre,
+                            actual.cantidad,
+                            actual.dato.precio,
+                            actual.dato.precio * actual.cantidad
+                    ));
+                    actual = actual.sig;
+                }
+
+                writer.write("SUBTOTAL: $" + calcularTotal() + "\n");
+
+                // Confirmación
+                new Alert(Alert.AlertType.INFORMATION,
+                        "Historial actualizado en:\n" + rutaCompleta).showAndWait();
+            } catch (IOException e) {
+                new Alert(Alert.AlertType.ERROR,
+                        "Error al guardar: " + e.getMessage()).show();
+            }
+        } else {
+            System.out.println("Operación cancelada.");
         }
     }
 
