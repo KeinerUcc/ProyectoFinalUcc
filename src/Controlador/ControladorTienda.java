@@ -39,6 +39,7 @@ import javafx.stage.DirectoryChooser;
 public class ControladorTienda extends Productos {
 
     public Nodo<Producto> cabezaCarrito;
+    public Nodo<Producto> cabezaFavoritos;
     public Pane PaneCarrito;
     public Pane panelPostCarrito;
     public Pane panelPostCarrito2;
@@ -436,25 +437,97 @@ public class ControladorTienda extends Productos {
         }
     }
 
+    public void añadirFavorito(Producto producto) {
+        if (!getEstaEnFavoritos(producto)) {
+            Nodo<Producto> nuevoNodo = new Nodo(producto);
+
+            if (ControladorPrincipal != null) {
+                if (ControladorPrincipal.cabezaFavoritos == null) {
+                    ControladorPrincipal.cabezaFavoritos = nuevoNodo;
+                } else {
+                    Nodo<Producto> actual = ControladorPrincipal.cabezaFavoritos;
+                    while (actual.sig != null) {
+                        actual = actual.sig;
+                    }
+                    actual.sig = nuevoNodo;
+                }
+            } else {
+                if (cabezaFavoritos == null) {
+                    cabezaFavoritos = nuevoNodo;
+                } else {
+                    Nodo<Producto> actual = cabezaFavoritos;
+                    while (actual.sig != null) {
+                        actual = actual.sig;
+                    }
+                    actual.sig = nuevoNodo;
+                }
+            }
+        }
+    }
+
+    public void eliminarDeFavoritos(Producto producto) {
+        Nodo<Producto> cabezaActual;
+        if (ControladorPrincipal != null) {
+            cabezaActual = ControladorPrincipal.cabezaFavoritos;
+        } else {
+            cabezaActual = cabezaFavoritos;
+        }
+        if (cabezaActual == null) {
+            return;
+        }
+
+        if (cabezaActual.dato.equals(producto)) {
+            if (ControladorPrincipal != null) {
+                ControladorPrincipal.cabezaFavoritos = cabezaActual.sig;
+            } else {
+                cabezaFavoritos = cabezaActual.sig;
+            }
+        } else {
+            Nodo<Producto> actual = cabezaActual;
+            while (actual.sig != null && !actual.sig.dato.equals(producto)) {
+                actual = actual.sig;
+            }
+            if (actual.sig != null) {
+                actual.sig = actual.sig.sig;
+            }
+        }
+    }
+
+    public boolean getEstaEnFavoritos(Producto producto) {
+        Nodo<Producto> lista;
+        if (ControladorPrincipal != null) {
+            lista = ControladorPrincipal.cabezaFavoritos;
+        } else {
+            lista = cabezaFavoritos;
+        }
+        if (lista == null) {
+            return false;
+        }
+
+        Nodo<Producto> actual = lista;
+        while (actual != null) {
+            if (actual.dato != null && actual.dato.equals(producto)) {
+                return true;
+            }
+            actual = actual.sig;
+        }
+        return false;
+    }
+
     @FXML
     public void guardarHistorialEnArchivo() {
-        // Crear un DirectoryChooser para que el usuario elija la carpeta
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Seleccionar Carpeta para Guardar el Historial");
 
-        // Configurar la carpeta inicial (opcional)
         directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 
-        // Mostrar el diálogo y obtener la carpeta seleccionada
         Stage stage = (Stage) ScrollPaneCarrito.getScene().getWindow();
         File selectedDirectory = directoryChooser.showDialog(stage);
 
         if (selectedDirectory != null) {
-            // Ruta fija del archivo (siempre el mismo nombre)
             String rutaCompleta = selectedDirectory.getAbsolutePath() + "/historial_compras.txt";
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaCompleta, true))) {  // ¡Modo append (true)!
-                // Separador entre entradas (opcional)
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaCompleta, true))) {
                 writer.write("\n=== NUEVA ENTRADA === " + new Date() + "\n\n");
 
                 Nodo<Producto> actual = cabezaCarrito;
@@ -471,16 +544,14 @@ public class ControladorTienda extends Productos {
 
                 writer.write("SUBTOTAL: $" + calcularTotal() + "\n");
 
-                // Confirmación
                 new Alert(Alert.AlertType.INFORMATION,
                         "Historial actualizado en:\n" + rutaCompleta).showAndWait();
             } catch (IOException e) {
                 new Alert(Alert.AlertType.ERROR,
                         "Error al guardar: " + e.getMessage()).show();
             }
-        } else {
-            System.out.println("Operación cancelada.");
         }
+
     }
 
     @FXML
