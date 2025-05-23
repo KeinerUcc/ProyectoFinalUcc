@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1700.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
   <content>
     <AnchorPane fx:id="panePrincipal1" minHeight="0.0" minWidth="0.0" prefHeight="1700.0" prefWidth="0.0">
          <children>
@@ -20,7 +20,7 @@
                   <Image url="@../Imagenes/P1.png" />
                </image>
             </ImageView>
-            <Pane fx:id="panelPostCarrito2" layoutY="14.0" opacity="0.0" prefHeight="1760.0" prefWidth="774.0" style="-fx-background-color: black;" />
+            <Pane fx:id="panelPostCarrito2" layoutY="14.0" onMouseClicked="#volver" opacity="0.0" prefHeight="1760.0" prefWidth="774.0" style="-fx-background-color: black;" />
             <Pane fx:id="panelMenu" layoutX="566.0" layoutY="83.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="161.0" prefWidth="153.0" style="-fx-background-color: #AAA283;" visible="false">
                <children>
                   <Button layoutX="29.0" layoutY="20.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: #4A3A18;" text="PERFIL" textFill="WHITE">
@@ -125,15 +125,15 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ToggleButton layoutX="192.0" layoutY="1156.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" text="ToggleButton" />
-            <ToggleButton layoutX="685.0" layoutY="751.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" text="ToggleButton" />
-            <ToggleButton layoutX="439.0" layoutY="752.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" text="ToggleButton" />
-            <ToggleButton fx:id="btnfav" layoutX="191.0" layoutY="752.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="35.0" style="-fx-background-color: #634A2C;" text="ToggleButton" />
-            <ToggleButton layoutX="685.0" layoutY="1160.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" text="ToggleButton" />
-            <ToggleButton layoutX="189.0" layoutY="1562.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" text="ToggleButton" />
-            <ToggleButton layoutX="438.0" layoutY="1562.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" text="ToggleButton" />
-            <ToggleButton layoutX="437.0" layoutY="1156.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" text="ToggleButton" />
-            <ToggleButton layoutX="685.0" layoutY="1566.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" text="ToggleButton" />
+            <ToggleButton layoutX="192.0" layoutY="1156.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton layoutX="685.0" layoutY="751.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton layoutX="439.0" layoutY="752.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavAnilloRoyalStar" layoutX="191.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavAnilloRoyalStar" opacity="0.0" prefHeight="28.0" prefWidth="35.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton layoutX="685.0" layoutY="1160.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton layoutX="189.0" layoutY="1562.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton layoutX="438.0" layoutY="1562.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton layoutX="437.0" layoutY="1156.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton layoutX="685.0" layoutY="1566.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
             <Button fx:id="cambiarAProductos4" layoutX="332.0" layoutY="1637.0" mnemonicParsing="false" onAction="#cambiarAProductos4" opacity="0.0" prefHeight="26.0" prefWidth="21.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />

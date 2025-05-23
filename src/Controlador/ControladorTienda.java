@@ -25,6 +25,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -50,6 +52,7 @@ public class ControladorTienda extends Productos {
     public Pane panelHistorial;
     public Pane panelPedidos;
     public ScrollPane scrollHistorial;
+    
 
     public ControladorTienda ControladorPrincipal;
 
@@ -437,7 +440,7 @@ public class ControladorTienda extends Productos {
         }
     }
 
-    public void añadirFavorito(Producto producto) {
+    public void añadirFavoritos(Producto producto) {
         if (!getEstaEnFavoritos(producto)) {
             Nodo<Producto> nuevoNodo = new Nodo(producto);
 
@@ -465,7 +468,7 @@ public class ControladorTienda extends Productos {
         }
     }
 
-    public void eliminarDeFavoritos(Producto producto) {
+    public void eliminarFavoritos(Producto producto) {
         Nodo<Producto> cabezaActual;
         if (ControladorPrincipal != null) {
             cabezaActual = ControladorPrincipal.cabezaFavoritos;
@@ -551,7 +554,6 @@ public class ControladorTienda extends Productos {
                         "Error al guardar: " + e.getMessage()).show();
             }
         }
-
     }
 
     @FXML
@@ -579,6 +581,15 @@ public class ControladorTienda extends Productos {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    
+
+    public void initialize() {
+        Image coraLleno = new Image(getClass().getResourceAsStream("/Imagenes/coraLleno.png"));
+        ImageView imageViewCelular = new ImageView(coraLleno);
+        imageViewCelular.setFitHeight(20);
+        imageViewCelular.setFitWidth(20);
+        btnFavAnilloRoyalStar.setGraphic(imageViewCelular);
     }
 
     @FXML
@@ -744,6 +755,127 @@ public class ControladorTienda extends Productos {
     public void CollarPearl() {
         añadirCarrito(CollarPearl);
     }
+    
+    
+    
+    // --------------------------------------------Pa favoritos chichi------------------------------------------------------//
+    public void añadirFav(ToggleButton toogleButton, Producto producto){
+        if(toogleButton.isSelected()){
+            toogleButton.setOpacity(1);
+            añadirFavoritos(producto);
+        } else {
+            toogleButton.setOpacity(0);
+            eliminarFavoritos(producto);
+    }
+    }
+    
+    @FXML
+    public void añadirFavAnilloRoyalStar(){
+        añadirFav(btnFavAnilloRoyalStar, AnilloRoyalStar);
+    }
+    @FXML
+    public void añadirFavPulseraCrazy(){
+        añadirFav(btnFavPulseraCrazy, PulseraCrazy);
+    }
+    @FXML
+    public void añadirFavCadenaItaliana(){
+        añadirFav(btnFavCadenaItaliana, CadenaItaliana);
+    }
+    @FXML
+    public void añadirFavCollarGalaxy(){
+        añadirFav(btnFavCollarGalaxy, CollarGalaxy);
+    }
+    @FXML
+    public void añadirFavPulseraVanCleef(){
+        añadirFav(btnFavPulseraVanCleef, PulseraVanCleef);
+    }
+    @FXML
+    public void añadirFavDijeMar(){
+        añadirFav(btnFavDijeMar, DijeMar);
+    }
+    @FXML
+    public void añadirFavRelojConquest(){
+        añadirFav(btnFavRelojConquest, RelojConquest);
+    }
+    @FXML
+    public void añadirFavDijeOsoPanda(){
+        añadirFav(btnFavDijeOsoPanda, DijeOsoPanda);
+    }
+    @FXML
+    public void añadirFavAnilloChaosDouble(){
+        añadirFav(btnFavAnilloChaosDouble, AnilloChaosDouble);
+    }
+    @FXML
+    public void añadirFavCollarFinobolit(){
+        añadirFav(btnFavCollarFinobolit, CollarFinobolit);
+    }
+    @FXML
+    public void añadirFavAretescelestial(){
+        añadirFav(btnFavAretescelestial, Aretescelestial);
+    }
+    @FXML
+    public void añadirFavCadenaEsclava(){
+        añadirFav(btnFavCadenaEsclava, CadenaEsclava);
+    }
+    @FXML
+    public void añadirFavPulseraArrastrada(){
+        añadirFav(btnFavPulseraArrastrada, PulseraArrastrada);
+    }@FXML
+    public void añadirFavPulserasCombLuxury(){
+        añadirFav(btnFavPulserasCombLuxury, PulserasCombLuxury);
+    }@FXML
+    public void añadirFavRelojTissot(){
+        añadirFav(btnFavRelojTissot, RelojTissot);
+    }@FXML
+    public void añadirFavComboAretesSweet(){
+        añadirFav(btnFavComboAretesSweet, ComboAretesSweet);
+    }@FXML
+    public void añadirFavDijeOsito(){
+        añadirFav(btnFavDijeOsito, DijeOsito);
+    }@FXML
+    public void añadirFavAnilloGoldenLuz(){
+        añadirFav(btnFavAnilloGoldenLuz, AnilloGoldenLuz);
+    }@FXML
+    public void añadirFavCollarRama(){
+        añadirFav(btnFavCollarRama, CollarRama);
+    }@FXML
+    public void añadirFavAretesCoquet(){
+        añadirFav(btnFavAretesCoquet, AretesCoquet);
+    }@FXML
+    public void añadirFavCollarPlataMain(){
+        añadirFav(btnFavCollarPlataMain, CollarPlataMain);
+    }@FXML
+    public void añadirFavRelojLadyAutomatic(){
+        añadirFav(btnFavRelojLadyAutomatic, RelojLadyAutomatic);
+    }@FXML
+    public void añadirFavCollarCrisFlower(){
+        añadirFav(btnFavCollarCrisFlower, CollarCrisFlower);
+    }@FXML
+    public void añadirFavDijeOsitoenPie(){
+        añadirFav(btnFavDijeOsitoenPie, DijeOsitoenPie);
+    }@FXML
+    public void añadirFavAnilloGreenPow(){
+        añadirFav(btnFavAnilloGreenPow, AnilloGreenPow);
+    }@FXML
+    public void añadirFavCollarLuzFugaz(){
+        añadirFav(btnFavCollarLuzFugaz, CollarLuzFugaz);
+    }@FXML
+    public void añadirFavAretesBoldHuggies(){
+        añadirFav(btnFavAretesBoldHuggies, AretesBoldHuggies);
+    }@FXML
+    public void añadirFavCadenaSingapur(){
+        añadirFav(btnFavCadenaSingapur, CadenaSingapur);
+    }@FXML
+    public void añadirFavAnilloFlowers(){
+        añadirFav(btnFavAnilloFlowers, AnilloFlowers);
+    }@FXML
+    public void añadirFavPulseraDestello(){
+        añadirFav(btnFavPulseraDestello, PulseraDestello);
+    }@FXML
+    public void añadirFavCollarPearl(){
+        añadirFav(btnFavCollarPearl, CollarPearl);
+    }
+
     @FXML
     public Button btnCambiarAProductos;
     @FXML
