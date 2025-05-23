@@ -4,6 +4,9 @@
  */
 package Modelo;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.ToggleButton;
+
 /**
  *
  * @author KEINER
@@ -224,4 +227,41 @@ public class Productos {
             "Collar con perlas artificiales enlazadas en cadena dorada, con un dije en forma de flor. ",
             35000.0,
             "/ImagenesProductos/Collar pearl 36.png");
+    
+    
+    @FXML public ToggleButton btnFavAnilloRoyalStar;
+    @FXML public ToggleButton btnFavPulseraCrazy;
+    @FXML public ToggleButton btnFavAretesNudoGold;
+    @FXML public ToggleButton btnFavCadenaItaliana;
+    @FXML public ToggleButton btnFavCollarGalaxy;
+    @FXML public ToggleButton btnFavPulseraVanCleef;
+    @FXML public ToggleButton btnFavDijeMar;
+    @FXML public ToggleButton btnFavRelojConquest;
+    @FXML public ToggleButton btnFavDijeOsoPanda;
+    @FXML public ToggleButton btnFavAnilloChaosDouble;
+    @FXML public ToggleButton btnFavCollarFinobolit;
+    @FXML public ToggleButton btnFavAretescelestial;
+    @FXML public ToggleButton btnFavCadenaEsclava;
+    @FXML public ToggleButton btnFavPulseraArrastrada;
+    @FXML public ToggleButton btnFavPulserasCombLuxury;
+    @FXML public ToggleButton btnFavRelojTissot;
+    @FXML public ToggleButton btnFavComboAretesSweet;
+    @FXML public ToggleButton btnFavDijeOsito;
+    @FXML public ToggleButton btnFavAnilloGoldenLuz;
+    @FXML public ToggleButton btnFavCollarRama;
+    @FXML public ToggleButton btnFavAretesCoquet;
+    @FXML public ToggleButton btnFavCollarPlataMain;
+    @FXML public ToggleButton btnFavRelojLadyAutomatic;
+    @FXML public ToggleButton btnFavCollarCrisFlower;
+    @FXML public ToggleButton btnFavDijeOsitoenPie;
+    @FXML public ToggleButton btnFavAnilloGreenPow;
+    @FXML public ToggleButton btnFavCollarLuzFugaz;
+    @FXML public ToggleButton btnFavAretesBoldHuggies;
+    @FXML public ToggleButton btnFavCadenaSingapur;
+    @FXML public ToggleButton btnFavAnilloFlowers;
+    @FXML public ToggleButton btnFavPulseraDestello;
+    @FXML public ToggleButton btnFavCollarPearl;
+    
+    
+    
 }
