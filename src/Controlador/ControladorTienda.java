@@ -17,22 +17,31 @@ import Modelo.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import javafx.animation.FadeTransition;
+import javafx.animation.ScaleTransition;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
+import javafx.util.Duration;
 
 /**
  *
@@ -43,7 +52,6 @@ public class ControladorTienda extends Productos {
     public Nodo<Producto> cabezaCarrito;
     public Nodo<Producto> cabezaFavoritos;
     public Pane PaneCarrito;
-    public Pane panelPostCarrito;
     public Pane panelPostCarrito2;
     public ScrollPane ScrollPaneCarrito;
     public Nodo<Producto> inicioHistorial;
@@ -52,13 +60,17 @@ public class ControladorTienda extends Productos {
     public Pane panelHistorial;
     public Pane panelPedidos;
     public ScrollPane scrollHistorial;
-    
+    public Pane panelDeseos;
+    public ScrollPane scrollDeseos;
+    public final Map<Producto, ToggleButton> productoToToggle = new HashMap<>();
+    public Image coraLleno = new Image(getClass().getResourceAsStream("/Imagenes/coraLleno.png"));
 
     public ControladorTienda ControladorPrincipal;
 
     public ControladorTienda() {
         cabezaCarrito = null;
         inicioHistorial = null;
+        cabezaFavoritos = null;
     }
 
     public void setListaCarrito(Nodo<Producto> cabeza) {
@@ -67,6 +79,10 @@ public class ControladorTienda extends Productos {
 
     public void setInicioHistorial(Nodo<Producto> inicio) {
         this.inicioHistorial = inicio;
+    }
+
+    public void setListaFavoritos(Nodo<Producto> cabeza) {
+        this.cabezaFavoritos = cabeza;
     }
 
     public Nodo<Producto> getFinHistorial() {
@@ -221,11 +237,16 @@ public class ControladorTienda extends Productos {
 
     @FXML
     public void mostrarCarrito() {
-        VBox contenidoCarrito = new VBox(15);
+        VBox contenidoCarrito = new VBox(20);
         contenidoCarrito.setPadding(new Insets(20));
 
+        Glow glowEffect = new Glow(0.7);
+        DropShadow shadow = new DropShadow(10, Color.LIGHTGRAY);
+
         if (cabezaCarrito == null) {
-            contenidoCarrito.getChildren().add(new Label("El carrito está vacío"));
+            Label vacioLabel = new Label("El carrito está vacío");
+            vacioLabel.setEffect(shadow);
+            contenidoCarrito.getChildren().add(vacioLabel);
         } else {
             Nodo<Producto> actual = cabezaCarrito;
             while (actual != null) {
@@ -233,24 +254,38 @@ public class ControladorTienda extends Productos {
                     final Producto productoActual = actual.dato;
                     final Nodo<Producto> nodoActual = actual;
 
-                    HBox item = new HBox(4);
+                    HBox item = new HBox(20);
                     item.setAlignment(Pos.CENTER_LEFT);
                     item.setStyle("-fx-padding: 5; -fx-background-color: #f9f9f9;");
+                    item.setEffect(shadow);
 
                     ImageView img = new ImageView(productoActual.imagen);
-                    img.setFitHeight(60);
-                    img.setFitWidth(60);
+                    img.setFitHeight(70);
+                    img.setFitWidth(70);
+
+                    // Zoom y sombra en imagen
+                    img.setOnMouseEntered(e -> {
+                        img.setEffect(shadow);
+                        img.setScaleX(1.1);
+                        img.setScaleY(1.1);
+                    });
+                    img.setOnMouseExited(e -> {
+                        img.setEffect(null);
+                        img.setScaleX(1.0);
+                        img.setScaleY(1.0);
+                    });
 
                     VBox info = new VBox(5);
                     Label nombreLabel = new Label(productoActual.nombre);
                     nombreLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
 
-                    HBox cantidadBox = new HBox(4);
+                    HBox cantidadBox = new HBox(10);
                     cantidadBox.setAlignment(Pos.CENTER_LEFT);
 
                     Button btnMenos = new Button("-");
-                    btnMenos.setStyle("-fx-background-color: #ff4444; -fx-text-fill: "
-                            + "white; -fx-min-width: 10; -fx-min-height: 10");
+                    btnMenos.setPrefWidth(25);
+                    btnMenos.setCursor(Cursor.HAND);
+                    btnMenos.setStyle("-fx-background-color: #FF6357; -fx-text-fill: white;");
                     btnMenos.setOnAction(e -> {
                         if (nodoActual.cantidad > 1) {
                             nodoActual.cantidad--;
@@ -260,16 +295,35 @@ public class ControladorTienda extends Productos {
                             mostrarCarrito();
                         }
                     });
+                    // Zoom y glow en btnMenos
+                    btnMenos.setOnMouseEntered(e -> {
+                        btnMenos.setEffect(glowEffect);
+                        zoomButton(btnMenos, 1.2);
+                    });
+                    btnMenos.setOnMouseExited(e -> {
+                        btnMenos.setEffect(null);
+                        zoomButton(btnMenos, 1.0);
+                    });
 
                     Label lblCantidad = new Label("Cant:" + nodoActual.cantidad);
                     lblCantidad.setStyle("-fx-font-size: 12px;");
 
                     Button btnMas = new Button("+");
-                    btnMas.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; "
-                            + " -fx-min-width: 10; -fx-min-height: 10");
+                    btnMas.setPrefWidth(25);
+                    btnMas.setCursor(Cursor.HAND);
+                    btnMas.setStyle("-fx-background-color: green; -fx-text-fill: white;");
                     btnMas.setOnAction(e -> {
                         nodoActual.cantidad++;
                         mostrarCarrito();
+                    });
+                    // Zoom y glow en btnMas
+                    btnMas.setOnMouseEntered(e -> {
+                        btnMas.setEffect(glowEffect);
+                        zoomButton(btnMas, 1.2);
+                    });
+                    btnMas.setOnMouseExited(e -> {
+                        btnMas.setEffect(null);
+                        zoomButton(btnMas, 1.0);
                     });
 
                     cantidadBox.getChildren().addAll(btnMenos, lblCantidad, btnMas);
@@ -279,9 +333,19 @@ public class ControladorTienda extends Productos {
 
                     Button btnEliminar = new Button("Eliminar");
                     btnEliminar.setStyle("-fx-background-color: #ff4444; -fx-text-fill: white;");
+                    btnEliminar.setCursor(Cursor.HAND);
                     btnEliminar.setOnAction(e -> {
                         eliminarDelCarrito(productoActual);
                         mostrarCarrito();
+                    });
+                    // Zoom y glow en btnEliminar
+                    btnEliminar.setOnMouseEntered(e -> {
+                        btnEliminar.setEffect(glowEffect);
+                        zoomButton(btnEliminar, 1.2);
+                    });
+                    btnEliminar.setOnMouseExited(e -> {
+                        btnEliminar.setEffect(null);
+                        zoomButton(btnEliminar, 1.0);
                     });
 
                     info.getChildren().addAll(nombreLabel, cantidadBox);
@@ -301,15 +365,27 @@ public class ControladorTienda extends Productos {
             footer.setAlignment(Pos.CENTER_RIGHT);
             footer.setPadding(new Insets(20, 10, 10, 0));
             footer.setStyle("-fx-border-color: #e0e0e0; -fx-border-width: 1 0 0 0;");
+            footer.setEffect(shadow);
 
             Label lblTotal = new Label(String.format("Total: $%,.2f", calcularTotal()));
             lblTotal.setStyle("-fx-font-weight: bold; -fx-font-size: 16px;");
 
             Button btnComprar = new Button("Comprar todo");
             btnComprar.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
+            btnComprar.setCursor(Cursor.HAND);
+            btnComprar.setOnMouseEntered(e -> {
+                btnComprar.setEffect(glowEffect);
+                zoomButton(btnComprar, 1.2);
+            });
+            btnComprar.setOnMouseExited(e -> {
+                btnComprar.setEffect(null);
+                zoomButton(btnComprar, 1.0);
+            });
             btnComprar.setOnAction(e -> {
                 if (cabezaCarrito == null) {
-                    new Alert(Alert.AlertType.WARNING, "El carrito está vacío").showAndWait();
+                    Alert alerta = new Alert(Alert.AlertType.WARNING, "El carrito está vacío");
+                    alerta.getDialogPane().setEffect(shadow);
+                    alerta.showAndWait();
                 } else {
                     Nodo<Producto> productoActual = cabezaCarrito;
                     while (productoActual != null) {
@@ -319,8 +395,10 @@ public class ControladorTienda extends Productos {
                         productoActual = productoActual.sig;
                     }
                     guardarHistorialEnArchivo();
-                    new Alert(Alert.AlertType.INFORMATION,
-                            "¡Compra exitosa! Total: $" + calcularTotal()).showAndWait();
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION,
+                            "¡Compra exitosa! Total: $" + calcularTotal());
+                    alerta.getDialogPane().setEffect(shadow);
+                    alerta.showAndWait();
 
                     cabezaCarrito = null;
                     mostrarCarrito();
@@ -336,6 +414,14 @@ public class ControladorTienda extends Productos {
         PaneCarrito.setVisible(true);
         panelPostCarrito2.setOpacity(0.6);
         actualizarContadorCarrito();
+
+    }
+
+    private void zoomButton(Button button, double scale) {
+        ScaleTransition st = new ScaleTransition(Duration.millis(150), button);
+        st.setToX(scale);
+        st.setToY(scale);
+        st.play();
     }
 
     @FXML
@@ -401,17 +487,14 @@ public class ControladorTienda extends Productos {
                         precioUnitario.setStyle("-fx-font-size: 20px;");
 
                         Label precioTotal = new Label(String.format("Total: $%,.2f", totalProducto));
-                        precioTotal.setStyle("-fx-text-fill: #2e8b57; -fx-font-weight: bold; -fx-font-size: 22px;");
+                        precioTotal.setStyle("-fx-text-fill: #2e8b57; "
+                                + "-fx-font-weight: bold; -fx-font-size: 22px;");
 
                         info.getChildren().addAll(nombreLabel, cantidadLabel, precioUnitario, precioTotal);
                         item.getChildren().addAll(img, info);
                         contenidoHistorial.getChildren().add(item);
 
                         totalGeneral += totalProducto;
-
-                        Separator separator = new Separator();
-                        separator.setStyle("-fx-background-color: #555555; -fx-padding: 8 0 8 0;");
-                        contenidoHistorial.getChildren().add(separator);
                     }
                 }
                 actual = actual.sig;
@@ -465,6 +548,7 @@ public class ControladorTienda extends Productos {
                     actual.sig = nuevoNodo;
                 }
             }
+            actualizarToggleButton(producto, true);
         }
     }
 
@@ -494,6 +578,27 @@ public class ControladorTienda extends Productos {
                 actual.sig = actual.sig.sig;
             }
         }
+        actualizarToggleButton(producto, false);
+    }
+
+    private void actualizarToggleButton(Producto producto, boolean estaEnFavoritos) {
+        ToggleButton toggle = productoToToggle.get(producto);
+        if (toggle != null) {
+            Platform.runLater(() -> {
+                toggle.setSelected(estaEnFavoritos);
+                toggle.setOpacity(estaEnFavoritos ? 1 : 0);
+            });
+        }
+    }
+
+    public void sincronizarTodosToggleButtons() {
+        productoToToggle.forEach((producto, toggle) -> {
+            boolean estaEnFavoritos = getEstaEnFavoritos(producto);
+            Platform.runLater(() -> {
+                toggle.setSelected(estaEnFavoritos);
+                toggle.setOpacity(estaEnFavoritos ? 1 : 0);
+            });
+        });
     }
 
     public boolean getEstaEnFavoritos(Producto producto) {
@@ -515,6 +620,85 @@ public class ControladorTienda extends Productos {
             actual = actual.sig;
         }
         return false;
+    }
+
+    @FXML
+    public void mostrarDeseos() {
+        panelPostCarrito2.setOpacity(0.6);
+        panelDeseos.setVisible(true);
+
+        VBox contenidoFavoritos = new VBox(30);
+        contenidoFavoritos.setPadding(new Insets(15, 15, 15, 15));
+        contenidoFavoritos.setStyle("-fx-background-color: black;");
+
+        ControladorTienda controlador = (ControladorPrincipal != null) ? ControladorPrincipal : this;
+        Nodo<Producto> actual = (controlador != null) ? controlador.cabezaFavoritos : this.cabezaFavoritos;
+
+        if (actual != null) {
+            while (actual != null) {
+                if (actual.dato != null) {
+                    Producto producto = actual.dato;
+
+                    HBox item = new HBox(15);
+                    item.setAlignment(Pos.CENTER_LEFT);
+                    item.setStyle("-fx-padding: 12.5; -fx-background-color: #AA9866; "
+                            + "-fx-background-radius: 15; -fx-min-height: 100;");
+
+                    ImageView img = new ImageView(producto.imagen);
+                    img.setFitHeight(150);
+                    img.setFitWidth(150);
+                    img.setPreserveRatio(true);
+
+                    VBox info = new VBox(10);
+                    info.setAlignment(Pos.CENTER_LEFT);
+
+                    Label nombreLabel = new Label(producto.nombre);
+                    nombreLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 15px;");
+
+                    Label precioLabel = new Label(String.format("Precio: $%,.2f", producto.precio));
+                    precioLabel.setStyle("-fx-font-size: 15px;");
+
+                    Button btnAnadirCarrito = new Button("Añadir al carrito");
+                    btnAnadirCarrito.setStyle("-fx-background-color: #634A2C; "
+                            + "-fx-text-fill: white; -fx-font-weight: bold;");
+                    btnAnadirCarrito.setOnAction(e -> {
+                        añadirCarrito(producto);
+                        new Alert(Alert.AlertType.INFORMATION, producto.nombre
+                                + " añadido al carrito").showAndWait();
+                    });
+
+                    Button btnEliminarFavoritos = new Button("Eliminar de lista de deseos");
+                    btnEliminarFavoritos.setStyle("-fx-background-color: #634A2C; "
+                            + "-fx-text-fill: white; -fx-font-weight: bold;");
+                    btnEliminarFavoritos.setOnAction(e -> {
+                        eliminarFavoritos(producto);
+                        mostrarDeseos();
+                        new Alert(Alert.AlertType.INFORMATION, producto.nombre
+                                + " eliminado de favoritos").showAndWait();
+                    });
+
+                    HBox botonesBox = new HBox(7.5);
+                    botonesBox.setAlignment(Pos.CENTER_LEFT);
+                    botonesBox.getChildren().addAll(btnAnadirCarrito, btnEliminarFavoritos);
+
+                    info.getChildren().addAll(nombreLabel, precioLabel, botonesBox);
+                    item.getChildren().addAll(img, info);
+                    contenidoFavoritos.getChildren().add(item);
+                }
+                actual = actual.sig;
+            }
+        } else {
+            Label lblVacio = new Label("No hay productos en tu lista de deseos");
+            lblVacio.setStyle("-fx-font-size: 13px; -fx-text-fill: white;");
+            contenidoFavoritos.getChildren().add(lblVacio);
+        }
+
+        if (scrollDeseos != null) {
+            scrollDeseos.setContent(contenidoFavoritos);
+            scrollDeseos.setStyle("-fx-background: black; -fx-background-color: transparent;");
+            scrollDeseos.setFitToWidth(true);
+            scrollDeseos.setFitToHeight(true);
+        }
     }
 
     @FXML
@@ -562,6 +746,7 @@ public class ControladorTienda extends Productos {
         panelPostCarrito2.setOpacity(0);
         panelMenu.setVisible(false);
         panelHistorial.setVisible(false);
+        panelDeseos.setVisible(false);
     }
 
     @FXML
@@ -576,20 +761,109 @@ public class ControladorTienda extends Productos {
         Controlador.setListaCarrito(this.cabezaCarrito);
         Controlador.actualizarContadorCarrito();
         Controlador.setInicioHistorial(this.inicioHistorial);
+        Controlador.setListaFavoritos(cabezaFavoritos);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    
 
+    private void inicializarMapeoProductos() {
+        productoToToggle.put(AnilloRoyalStar, btnFavAnilloRoyalStar);
+        productoToToggle.put(PulseraCrazy, btnFavPulseraCrazy);
+        productoToToggle.put(AretesNudoGold, btnFavAretesNudoGold);
+        productoToToggle.put(CadenaItaliana, btnFavCadenaItaliana);
+        productoToToggle.put(CollarGalaxy, btnFavCollarGalaxy);
+        productoToToggle.put(PulseraVanCleef, btnFavPulseraVanCleef);
+        productoToToggle.put(DijeMar, btnFavDijeMar);
+        productoToToggle.put(RelojConquest, btnFavRelojConquest);
+        productoToToggle.put(DijeOsoPanda, btnFavDijeOsoPanda);
+        productoToToggle.put(AnilloChaosDouble, btnFavAnilloChaosDouble);
+        productoToToggle.put(CollarFinobolit, btnFavCollarFinobolit);
+        productoToToggle.put(Aretescelestial, btnFavAretescelestial);
+        productoToToggle.put(CadenaEsclava, btnFavCadenaEsclava);
+        productoToToggle.put(PulseraArrastrada, btnFavPulseraArrastrada);
+        productoToToggle.put(PulserasCombLuxury, btnFavPulserasCombLuxury);
+        productoToToggle.put(RelojTissot, btnFavRelojTissot);
+        productoToToggle.put(ComboAretesSweet, btnFavComboAretesSweet);
+        productoToToggle.put(DijeOsito, btnFavDijeOsito);
+        productoToToggle.put(AnilloGoldenLuz, btnFavAnilloGoldenLuz);
+        productoToToggle.put(DijeToyota, btnFavDijeToyota);
+        productoToToggle.put(RelojDolceVita, btnFavRelojDolceVita);
+        productoToToggle.put(CadenaGold, btnFavCadenaGold);
+        productoToToggle.put(AnilloGoldenluz, btnFavAnilloGoldenluz);
+        productoToToggle.put(CollarRama, btnFavCollarRama);
+        productoToToggle.put(AretesCoquet, btnFavAretesCoquet);
+        productoToToggle.put(CollarPlataMain, btnFavCollarPlataMain);
+        productoToToggle.put(RelojLadyAutomatic, btnFavRelojLadyAutomatic);
+        productoToToggle.put(CollarCrisFlower, btnFavCollarCrisFlower);
+        productoToToggle.put(DijeOsitoenPie, btnFavDijeOsitoenPie);
+        productoToToggle.put(AnilloGreenPow, btnFavAnilloGreenPow);
+        productoToToggle.put(CollarLuzFugaz, btnFavCollarLuzFugaz);
+        productoToToggle.put(AretesBoldHuggies, btnFavAretesBoldHuggies);
+        productoToToggle.put(CadenaSingapur, btnFavCadenaSingapur);
+        productoToToggle.put(AnilloFlowers, btnFavAnilloFlowers);
+        productoToToggle.put(PulseraDestello, btnFavPulseraDestello);
+        productoToToggle.put(CollarPearl, btnFavCollarPearl);
+    }
+
+    @FXML
     public void initialize() {
-        Image coraLleno = new Image(getClass().getResourceAsStream("/Imagenes/coraLleno.png"));
-        ImageView imageViewCelular = new ImageView(coraLleno);
-        imageViewCelular.setFitHeight(20);
-        imageViewCelular.setFitWidth(20);
-        btnFavAnilloRoyalStar.setGraphic(imageViewCelular);
+        inicializarMapeoProductos();
+        setImagenToogleButtons();
+    }
+
+    public void setImagenFavorito(ToggleButton toggleButton, Image imagen) {
+        if (toggleButton == null) {
+            return;
+        }
+        ImageView imageView = new ImageView(imagen);
+        imageView.setFitHeight(20);
+        imageView.setFitWidth(20);
+        toggleButton.setGraphic(imageView);
+    }
+
+    @FXML
+    public void setImagenToogleButtons() {
+        setImagenFavorito(btnFavAnilloRoyalStar, coraLleno);
+        setImagenFavorito(btnFavPulseraCrazy, coraLleno);
+        setImagenFavorito(btnFavAretesNudoGold, coraLleno);
+        setImagenFavorito(btnFavCadenaItaliana, coraLleno);
+        setImagenFavorito(btnFavCollarGalaxy, coraLleno);
+        setImagenFavorito(btnFavPulseraVanCleef, coraLleno);
+        setImagenFavorito(btnFavDijeMar, coraLleno);
+        setImagenFavorito(btnFavRelojConquest, coraLleno);
+        setImagenFavorito(btnFavDijeOsoPanda, coraLleno);
+        /*
+        setImagenFavorito(btnFavAnilloChaosDouble, coraLleno);
+        setImagenFavorito(btnFavCollarFinobolit, coraLleno);
+        setImagenFavorito(btnFavAretescelestial, coraLleno);
+        setImagenFavorito(btnFavCadenaEsclava, coraLleno);
+        setImagenFavorito(btnFavPulseraArrastrada, coraLleno);
+        setImagenFavorito(btnFavPulserasCombLuxury, coraLleno);
+        setImagenFavorito(btnFavRelojTissot, coraLleno);
+        setImagenFavorito(btnFavComboAretesSweet, coraLleno);
+        setImagenFavorito(btnFavDijeOsito, coraLleno);
+        setImagenFavorito(btnFavAnilloGoldenLuz, coraLleno);
+        setImagenFavorito(btnFavDijeToyota, coraLleno);
+        setImagenFavorito(btnFavRelojDolceVita, coraLleno);
+        setImagenFavorito(btnFavCadenaGold, coraLleno);
+        setImagenFavorito(btnFavAnilloGoldenluz, coraLleno);
+        setImagenFavorito(btnFavCollarRama, coraLleno);
+        setImagenFavorito(btnFavAretesCoquet, coraLleno);
+        setImagenFavorito(btnFavCollarPlataMain, coraLleno);
+        setImagenFavorito(btnFavRelojLadyAutomatic, coraLleno);
+        setImagenFavorito(btnFavCollarCrisFlower, coraLleno);
+        setImagenFavorito(btnFavDijeOsitoenPie, coraLleno);
+        setImagenFavorito(btnFavAnilloGreenPow, coraLleno);
+        setImagenFavorito(btnFavCollarLuzFugaz, coraLleno);
+        setImagenFavorito(btnFavAretesBoldHuggies, coraLleno);
+        setImagenFavorito(btnFavCadenaSingapur, coraLleno);
+        setImagenFavorito(btnFavAnilloFlowers, coraLleno);
+        setImagenFavorito(btnFavPulseraDestello, coraLleno);
+        setImagenFavorito(btnFavCollarPearl, coraLleno);
+         */
     }
 
     @FXML
@@ -755,124 +1029,173 @@ public class ControladorTienda extends Productos {
     public void CollarPearl() {
         añadirCarrito(CollarPearl);
     }
-    
-    
-    
-    // --------------------------------------------Pa favoritos chichi------------------------------------------------------//
-    public void añadirFav(ToggleButton toogleButton, Producto producto){
-        if(toogleButton.isSelected()){
-            toogleButton.setOpacity(1);
+
+    // -------------------------Pa favoritos chichi--------------------------------------//
+    public void añadirFav(ToggleButton toogleButton, Producto producto) {
+        if (toogleButton.isSelected()) {
             añadirFavoritos(producto);
         } else {
-            toogleButton.setOpacity(0);
             eliminarFavoritos(producto);
+        }
     }
-    }
-    
+
     @FXML
-    public void añadirFavAnilloRoyalStar(){
+    public void añadirFavAnilloRoyalStar() {
         añadirFav(btnFavAnilloRoyalStar, AnilloRoyalStar);
     }
+
     @FXML
-    public void añadirFavPulseraCrazy(){
+    public void añadirFavPulseraCrazy() {
         añadirFav(btnFavPulseraCrazy, PulseraCrazy);
     }
+
     @FXML
-    public void añadirFavCadenaItaliana(){
+    public void añadirFavAretesNudoGold() {
+        añadirFav(btnFavAretesNudoGold, AretesNudoGold);
+    }
+
+    @FXML
+    public void añadirFavCadenaItaliana() {
         añadirFav(btnFavCadenaItaliana, CadenaItaliana);
     }
+
     @FXML
-    public void añadirFavCollarGalaxy(){
+    public void añadirFavCollarGalaxy() {
         añadirFav(btnFavCollarGalaxy, CollarGalaxy);
     }
+
     @FXML
-    public void añadirFavPulseraVanCleef(){
+    public void añadirFavPulseraVanCleef() {
         añadirFav(btnFavPulseraVanCleef, PulseraVanCleef);
     }
+
     @FXML
-    public void añadirFavDijeMar(){
+    public void añadirFavDijeMar() {
         añadirFav(btnFavDijeMar, DijeMar);
     }
+
     @FXML
-    public void añadirFavRelojConquest(){
+    public void añadirFavRelojConquest() {
         añadirFav(btnFavRelojConquest, RelojConquest);
     }
+
     @FXML
-    public void añadirFavDijeOsoPanda(){
+    public void añadirFavDijeOsoPanda() {
         añadirFav(btnFavDijeOsoPanda, DijeOsoPanda);
     }
+
     @FXML
-    public void añadirFavAnilloChaosDouble(){
+    public void añadirFavAnilloChaosDouble() {
         añadirFav(btnFavAnilloChaosDouble, AnilloChaosDouble);
     }
+
     @FXML
-    public void añadirFavCollarFinobolit(){
+    public void añadirFavCollarFinobolit() {
         añadirFav(btnFavCollarFinobolit, CollarFinobolit);
     }
+
     @FXML
-    public void añadirFavAretescelestial(){
+    public void añadirFavAretescelestial() {
         añadirFav(btnFavAretescelestial, Aretescelestial);
     }
+
     @FXML
-    public void añadirFavCadenaEsclava(){
+    public void añadirFavCadenaEsclava() {
         añadirFav(btnFavCadenaEsclava, CadenaEsclava);
     }
+
     @FXML
-    public void añadirFavPulseraArrastrada(){
+    public void añadirFavPulseraArrastrada() {
         añadirFav(btnFavPulseraArrastrada, PulseraArrastrada);
-    }@FXML
-    public void añadirFavPulserasCombLuxury(){
+    }
+
+    @FXML
+    public void añadirFavPulserasCombLuxury() {
         añadirFav(btnFavPulserasCombLuxury, PulserasCombLuxury);
-    }@FXML
-    public void añadirFavRelojTissot(){
+    }
+
+    @FXML
+    public void añadirFavRelojTissot() {
         añadirFav(btnFavRelojTissot, RelojTissot);
-    }@FXML
-    public void añadirFavComboAretesSweet(){
+    }
+
+    @FXML
+    public void añadirFavComboAretesSweet() {
         añadirFav(btnFavComboAretesSweet, ComboAretesSweet);
-    }@FXML
-    public void añadirFavDijeOsito(){
+    }
+
+    @FXML
+    public void añadirFavDijeOsito() {
         añadirFav(btnFavDijeOsito, DijeOsito);
-    }@FXML
-    public void añadirFavAnilloGoldenLuz(){
+    }
+
+    @FXML
+    public void añadirFavAnilloGoldenLuz() {
         añadirFav(btnFavAnilloGoldenLuz, AnilloGoldenLuz);
-    }@FXML
-    public void añadirFavCollarRama(){
+    }
+
+    @FXML
+    public void añadirFavCollarRama() {
         añadirFav(btnFavCollarRama, CollarRama);
-    }@FXML
-    public void añadirFavAretesCoquet(){
+    }
+
+    @FXML
+    public void añadirFavAretesCoquet() {
         añadirFav(btnFavAretesCoquet, AretesCoquet);
-    }@FXML
-    public void añadirFavCollarPlataMain(){
+    }
+
+    @FXML
+    public void añadirFavCollarPlataMain() {
         añadirFav(btnFavCollarPlataMain, CollarPlataMain);
-    }@FXML
-    public void añadirFavRelojLadyAutomatic(){
+    }
+
+    @FXML
+    public void añadirFavRelojLadyAutomatic() {
         añadirFav(btnFavRelojLadyAutomatic, RelojLadyAutomatic);
-    }@FXML
-    public void añadirFavCollarCrisFlower(){
+    }
+
+    @FXML
+    public void añadirFavCollarCrisFlower() {
         añadirFav(btnFavCollarCrisFlower, CollarCrisFlower);
-    }@FXML
-    public void añadirFavDijeOsitoenPie(){
+    }
+
+    @FXML
+    public void añadirFavDijeOsitoenPie() {
         añadirFav(btnFavDijeOsitoenPie, DijeOsitoenPie);
-    }@FXML
-    public void añadirFavAnilloGreenPow(){
+    }
+
+    @FXML
+    public void añadirFavAnilloGreenPow() {
         añadirFav(btnFavAnilloGreenPow, AnilloGreenPow);
-    }@FXML
-    public void añadirFavCollarLuzFugaz(){
+    }
+
+    @FXML
+    public void añadirFavCollarLuzFugaz() {
         añadirFav(btnFavCollarLuzFugaz, CollarLuzFugaz);
-    }@FXML
-    public void añadirFavAretesBoldHuggies(){
+    }
+
+    @FXML
+    public void añadirFavAretesBoldHuggies() {
         añadirFav(btnFavAretesBoldHuggies, AretesBoldHuggies);
-    }@FXML
-    public void añadirFavCadenaSingapur(){
+    }
+
+    @FXML
+    public void añadirFavCadenaSingapur() {
         añadirFav(btnFavCadenaSingapur, CadenaSingapur);
-    }@FXML
-    public void añadirFavAnilloFlowers(){
+    }
+
+    @FXML
+    public void añadirFavAnilloFlowers() {
         añadirFav(btnFavAnilloFlowers, AnilloFlowers);
-    }@FXML
-    public void añadirFavPulseraDestello(){
+    }
+
+    @FXML
+    public void añadirFavPulseraDestello() {
         añadirFav(btnFavPulseraDestello, PulseraDestello);
-    }@FXML
-    public void añadirFavCollarPearl(){
+    }
+
+    @FXML
+    public void añadirFavCollarPearl() {
         añadirFav(btnFavCollarPearl, CollarPearl);
     }
 
