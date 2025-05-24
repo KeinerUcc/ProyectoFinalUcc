@@ -248,6 +248,10 @@ public class Productos {
     @FXML public ToggleButton btnFavComboAretesSweet;
     @FXML public ToggleButton btnFavDijeOsito;
     @FXML public ToggleButton btnFavAnilloGoldenLuz;
+    @FXML public ToggleButton btnFavDijeToyota;
+    @FXML public ToggleButton btnFavRelojDolceVita;
+    @FXML public ToggleButton btnFavCadenaGold;
+    @FXML public ToggleButton btnFavAnilloGoldenluz;
     @FXML public ToggleButton btnFavCollarRama;
     @FXML public ToggleButton btnFavAretesCoquet;
     @FXML public ToggleButton btnFavCollarPlataMain;
@@ -261,7 +265,5 @@ public class Productos {
     @FXML public ToggleButton btnFavAnilloFlowers;
     @FXML public ToggleButton btnFavPulseraDestello;
     @FXML public ToggleButton btnFavCollarPearl;
-    
-    
     
 }

@@ -1,0 +1,47 @@
+[33ma286df6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mRamaDeFreddy[m[33m)[m Commit #25 Gran avance en la logica de lista favoritos
+[33mcff559f[m Commit #23 Las compras realizadas se guardan en un archivo de texto, y esta se va actualizando a pesar de que cerremos el ejectuable ;)
+[33mea9da1c[m[33m ([m[1;31morigin/master[m[33m)[m Merge pull request #20 from KeinerUcc/RamaDeKeiner
+[33mde35ffb[m Commit #23 Correccion de errores e implemetacion de nuevos botones en los .fxml
+[33m3f08c7b[m Merge pull request #19 from KeinerUcc/RamaDeFreddy
+[33m936c96f[m Commit #22 Historial de compras completamente funcional, se mantiene la integridad de esa cola a pesar de que cambiemos entre ventanas
+[33m71f08da[m Merge pull request #18 from KeinerUcc/RamaDeKeiner
+[33m38950c4[m Commit #21 Se terminó de subir los productos y parte del funcionamiento del carrito en las paginas
+[33m8d89611[m Merge pull request #17 from KeinerUcc/RamaDeFreddy
+[33m06af34a[m Commit #20 Cambios para que la integridad de la lista del carrito se mantenga con la navegacion entre las ventanas, ya se soluciono ese problema
+[33m9fa5260[m Merge pull request #16 from KeinerUcc/RamaDeFreddy
+[33mc3ffe70[m Commit #19 Ya funciona el agg al carrito pero con 1 producto, ya que se estaba probando el funcionamiento
+[33m590c44b[m Merge pull request #15 from KeinerUcc/RamaDeKeiner
+[33meb7d7d0[m[33m ([m[1;31morigin/RamaDeKeiner[m[33m)[m Commit #18 Avance de las colas
+[33m9fea056[m Merge pull request #14 from KeinerUcc/RamaDeKeiner
+[33m836f466[m Commit #17 Terminamos de crear los objetos de los productos
+[33m65b9327[m Merge pull request #13 from KeinerUcc/RamaDeKeiner
+[33m290f350[m Commit #16 Creacion de productos en el codigo(objetos)
+[33me41b838[m Merge pull request #12 from KeinerUcc/RamaDeFreddy
+[33m18bf3f5[m Commit #15 Agg imagenes de los productos
+[33m3a11abb[m Merge pull request #11 from KeinerUcc/RamaDeFreddy
+[33m3711d1d[m Commit #14 Avance de las listas
+[33ma6148a0[m Commit #13 Avance de las listas
+[33m849b2a9[m Merge pull request #10 from KeinerUcc/RamaDeFreddy
+[33m463bb30[m Commit #12 Login completado, catalogo completado, se puede navegar entre ventanas perfectamente
+[33m8963f08[m Merge pull request #9 from KeinerUcc/RamaDeFreddy
+[33ma96ff56[m Commit #11 Se termina de agregar todas las pestañas para los productos, catalogo completado, solo falta terminar de enlazarlo con el controlador
+[33m6cb44f0[m Merge pull request #8 from KeinerUcc/RamaDeFreddy
+[33me2bf243[m Commit #10 Se sigue avanzando en la interfaz, agregando una nueva ventana para mas productos
+[33meca1763[m Merge pull request #7 from KeinerUcc/RamaDeFreddy
+[33mb9de915[m Commit #9 Se termina practicamente el controlador para navegar entre ventanas de la tienda(no completamente, pero el codigo esta listo pa ver todo el catalogo) falta terminar fxmls y enlazarlo
+[33mbade06d[m Merge pull request #6 from KeinerUcc/RamaDeFreddy
+[33m6562397[m Commit #8 Avance de codigo para manejar el viaje entre ventanas de la app, se crea la clase controlador para la tienda :)
+[33m1353678[m Commit #8 Avance de codigo para manejar el viaje entre ventanas de la app, se crea la clase controlador para la tienda :)
+[33m0509569[m Commit #8 Avance de codigo para manejar el viaje entre ventanas de la app, se crea la clase controlador para la tienda :)
+[33m2bf9b33[m Commit #7 Merge pull request #5 from Fredev09/RamaDeFreddy
+[33mfa7d697[m Commit #7 Se agg la interfaz del inicio de la app luego del login, falta configurarlo con el controlador aun, por lo tanto hay errores
+[33maf34150[m Merge pull request #4 from Fredev09/RamaDeFreddy
+[33m6edeb3f[m Commit #6 Login completo funcional
+[33m71d28a3[m Merge pull request #3 from Fredev09/RamaDeFreddy commit #5
+[33mf4de5e4[m Commit #5 Se agrega corectamente usuarios a la pila y valida bien si existe la cuenta, la logica del registro y del login hecha, faltarian arreglar unos detalles y el login quedaria listo
+[33m89c6af5[m Merge pull request #2 from Fredev09/RamaDeFreddy
+[33m0c86ae0[m Commit #4 Avance en la logica del login y registro
+[33m46772be[m Commit #3
+[33me471bf8[m Commit #3 Avance de la interfaz, se agrega el fxml para registro
+[33mc6703b5[m[33m ([m[1;32mmaster[m[33m, [m[1;32mRamaFreddy[m[33m)[m #2 commit terminar de configurar la vista
+[33mf43ec25[m #1 commit // inicio del login del proyecto en lo visual
