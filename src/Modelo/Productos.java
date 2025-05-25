@@ -145,7 +145,7 @@ public class Productos {
             430000.0,
             "/ImagenesProductos/Cadena gold 22.png");
 
-    public Producto AnilloGoldenluz = new Producto(
+    public Producto AnilloGoldenNature = new Producto(
             "Anillo Golden Nature",
             "Anillo con un relieve nature alrededor, con incrustaciones y baño de oro de 18k.",
             75000.0,
@@ -277,7 +277,7 @@ public class Productos {
     @FXML
     public Button btnCadenaGold;
     @FXML
-    public Button btnAnilloGoldenluz;
+    public Button btnAnilloGoldenNature;
     @FXML
     public Button btnCollarRama;
     @FXML
@@ -354,7 +354,7 @@ public class Productos {
     @FXML
     public ToggleButton btnFavCadenaGold;
     @FXML
-    public ToggleButton btnFavAnilloGoldenluz;
+    public ToggleButton btnFavAnilloGoldenNature;
     @FXML
     public ToggleButton btnFavCollarRama;
     @FXML

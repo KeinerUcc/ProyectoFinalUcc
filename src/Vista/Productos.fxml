@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -74,43 +75,49 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <Reflection />
+               </effect>
             </Button>
-            <Button fx:id="btnPulseraCrazy" layoutX="304.0" layoutY="709.0" mnemonicParsing="false" onAction="#PulseraCrazy" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: transparent;" text="Button">
+            <Button fx:id="btnPulseraCrazy" layoutX="304.0" layoutY="709.0" mnemonicParsing="false" onAction="#PulseraCrazy" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Reflection />
+               </effect>
+            </Button>
+            <Button fx:id="btnAretesNudoGold" layoutX="551.0" layoutY="709.0" mnemonicParsing="false" onAction="#AretesNudoGold" prefHeight="26.0" prefWidth="168.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="551.0" layoutY="709.0" mnemonicParsing="false" onAction="#AretesNudoGold" opacity="0.0" prefHeight="26.0" prefWidth="168.0" text="Button">
+            <Button fx:id="btnCadenaItaliana" layoutX="58.0" layoutY="1115.0" mnemonicParsing="false" onAction="#CadenaItaliana" prefHeight="26.0" prefWidth="168.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="58.0" layoutY="1115.0" mnemonicParsing="false" onAction="#CadenaItaliana" opacity="0.0" prefHeight="26.0" prefWidth="168.0" text="Button">
+            <Button fx:id="btnCollarGalaxy" layoutX="304.0" layoutY="1115.0" mnemonicParsing="false" onAction="#CollarGalaxy" prefHeight="26.0" prefWidth="168.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="304.0" layoutY="1115.0" mnemonicParsing="false" onAction="#CollarGalaxy" opacity="0.0" prefHeight="26.0" prefWidth="168.0" text="Button">
+            <Button fx:id="btnPulseraVanCleef" layoutX="551.0" layoutY="1117.0" mnemonicParsing="false" onAction="#PulseraVanCleef" prefHeight="28.0" prefWidth="170.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="551.0" layoutY="1117.0" mnemonicParsing="false" onAction="#PulseraVanCleef" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
+            <Button fx:id="btnDijeMar" layoutX="54.0" layoutY="1520.0" mnemonicParsing="false" onAction="#DijeMar" prefHeight="28.0" prefWidth="170.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="54.0" layoutY="1520.0" mnemonicParsing="false" onAction="#DijeMar" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
+            <Button fx:id="btnRelojConquest" layoutX="303.0" layoutY="1520.0" mnemonicParsing="false" onAction="#RelojConquest" prefHeight="28.0" prefWidth="170.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="303.0" layoutY="1520.0" mnemonicParsing="false" onAction="#RelojConquest" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="550.0" layoutY="1523.0" mnemonicParsing="false" onAction="#DijeOsoPanda" opacity="0.0" prefHeight="27.0" prefWidth="170.0" text="Button">
+            <Button fx:id="btnDijeOsoPanda" layoutX="550.0" layoutY="1523.0" mnemonicParsing="false" onAction="#DijeOsoPanda" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

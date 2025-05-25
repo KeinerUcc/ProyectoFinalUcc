@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1800.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1700.0" prefWidth="0.0">
          <children>
@@ -46,51 +47,6 @@
                </cursor>
             </Button>
             <Button layoutX="714.0" layoutY="33.0" mnemonicParsing="false" onAction="#mostrarCarrito" opacity="0.0" prefHeight="42.0" prefWidth="42.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="59.0" layoutY="709.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="169.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="308.0" layoutY="709.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="170.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="554.0" layoutY="709.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="168.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="63.0" layoutY="1118.0" mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="170.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="308.0" layoutY="1119.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="170.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="551.0" layoutY="1118.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="170.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="67.0" layoutY="1524.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="166.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="308.0" layoutY="1523.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="169.0" text="Button">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="550.0" layoutY="1523.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="173.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -184,6 +140,60 @@
                   <Font size="22.0" />
                </font>
             </Label>
+            <ToggleButton fx:id="btnFavAnilloGoldenLuz" layoutX="193.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavAnilloGoldenLuz" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavDijeToyota" layoutX="443.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavDijeToyota" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavRelojDolceVita" layoutX="686.0" layoutY="754.0" mnemonicParsing="false" onAction="#añadirFavRelojDolceVita" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavCadenaGold" layoutX="197.0" layoutY="1160.0" mnemonicParsing="false" onAction="#añadirFavCadenaGold" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavAnilloGoldenNature" layoutX="442.0" layoutY="1163.0" mnemonicParsing="false" onAction="#añadirFavAnilloGoldenNature" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavCollarRama" layoutX="687.0" layoutY="1159.0" mnemonicParsing="false" onAction="#añadirFavCollarRama" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavAretesCoquet" layoutX="199.0" layoutY="1565.0" mnemonicParsing="false" onAction="#añadirFavAretesCoquet" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavCollarPlataMain" layoutX="443.0" layoutY="1565.0" mnemonicParsing="false" onAction="#añadirFavCollarPlataMain" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavRelojLadyAutomatic" layoutX="686.0" layoutY="1567.0" mnemonicParsing="false" onAction="#añadirFavRelojLadyAutomatic" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <Button fx:id="btnAnilloGoldenLuz" layoutX="59.0" layoutY="707.0" mnemonicParsing="false" onAction="#AnilloGoldenLuz" prefHeight="31.0" prefWidth="171.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnDijeToyota" layoutX="307.0" layoutY="708.0" mnemonicParsing="false" onAction="#DijeToyota" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnRelojDolceVita" layoutX="552.0" layoutY="708.0" mnemonicParsing="false" onAction="#RelojDolceVita" prefHeight="29.0" prefWidth="172.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnCollarRama" layoutX="552.0" layoutY="1115.0" mnemonicParsing="false" onAction="#CollarRama" prefHeight="30.0" prefWidth="171.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnAnilloGoldenNature" layoutX="306.0" layoutY="1117.0" mnemonicParsing="false" onAction="#AnilloGoldenNature" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnCadenaGold" layoutX="63.0" layoutY="1118.0" mnemonicParsing="false" onAction="#CadenaGold" prefHeight="29.0" prefWidth="170.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnAretesCoquet" layoutX="64.0" layoutY="1522.0" mnemonicParsing="false" onAction="#AretesCoquet" prefHeight="32.0" prefWidth="171.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnCollarPlataMain" layoutX="308.0" layoutY="1522.0" mnemonicParsing="false" onAction="#CollarPlataMain" prefHeight="28.0" prefWidth="172.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnRelojLadyAutomatic" layoutX="551.0" layoutY="1522.0" mnemonicParsing="false" onAction="#RelojLadyAutomatic" prefHeight="28.0" prefWidth="174.0" style="-fx-background-color: transparent;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children></AnchorPane>
   </content>
 </ScrollPane>
