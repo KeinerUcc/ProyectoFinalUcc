@@ -5,6 +5,7 @@
 package Modelo;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 
 /**
@@ -227,43 +228,158 @@ public class Productos {
             "Collar con perlas artificiales enlazadas en cadena dorada, con un dije en forma de flor. ",
             35000.0,
             "/ImagenesProductos/Collar pearl 36.png");
+
     
     
-    @FXML public ToggleButton btnFavAnilloRoyalStar;
-    @FXML public ToggleButton btnFavPulseraCrazy;
-    @FXML public ToggleButton btnFavAretesNudoGold;
-    @FXML public ToggleButton btnFavCadenaItaliana;
-    @FXML public ToggleButton btnFavCollarGalaxy;
-    @FXML public ToggleButton btnFavPulseraVanCleef;
-    @FXML public ToggleButton btnFavDijeMar;
-    @FXML public ToggleButton btnFavRelojConquest;
-    @FXML public ToggleButton btnFavDijeOsoPanda;
-    @FXML public ToggleButton btnFavAnilloChaosDouble;
-    @FXML public ToggleButton btnFavCollarFinobolit;
-    @FXML public ToggleButton btnFavAretescelestial;
-    @FXML public ToggleButton btnFavCadenaEsclava;
-    @FXML public ToggleButton btnFavPulseraArrastrada;
-    @FXML public ToggleButton btnFavPulserasCombLuxury;
-    @FXML public ToggleButton btnFavRelojTissot;
-    @FXML public ToggleButton btnFavComboAretesSweet;
-    @FXML public ToggleButton btnFavDijeOsito;
-    @FXML public ToggleButton btnFavAnilloGoldenLuz;
-    @FXML public ToggleButton btnFavDijeToyota;
-    @FXML public ToggleButton btnFavRelojDolceVita;
-    @FXML public ToggleButton btnFavCadenaGold;
-    @FXML public ToggleButton btnFavAnilloGoldenluz;
-    @FXML public ToggleButton btnFavCollarRama;
-    @FXML public ToggleButton btnFavAretesCoquet;
-    @FXML public ToggleButton btnFavCollarPlataMain;
-    @FXML public ToggleButton btnFavRelojLadyAutomatic;
-    @FXML public ToggleButton btnFavCollarCrisFlower;
-    @FXML public ToggleButton btnFavDijeOsitoenPie;
-    @FXML public ToggleButton btnFavAnilloGreenPow;
-    @FXML public ToggleButton btnFavCollarLuzFugaz;
-    @FXML public ToggleButton btnFavAretesBoldHuggies;
-    @FXML public ToggleButton btnFavCadenaSingapur;
-    @FXML public ToggleButton btnFavAnilloFlowers;
-    @FXML public ToggleButton btnFavPulseraDestello;
-    @FXML public ToggleButton btnFavCollarPearl;
+    //-----------Botones pal carrito chichi---------------//
+    @FXML
+    public Button btnAnilloRoyalStar;
+    @FXML
+    public Button btnPulseraCrazy;
+    @FXML
+    public Button btnAretesNudoGold;
+    @FXML
+    public Button btnCadenaItaliana;
+    @FXML
+    public Button btnCollarGalaxy;
+    @FXML
+    public Button btnPulseraVanCleef;
+    @FXML
+    public Button btnDijeMar;
+    @FXML
+    public Button btnRelojConquest;
+    @FXML
+    public Button btnDijeOsoPanda;
+    @FXML
+    public Button btnAnilloChaosDouble;
+    @FXML
+    public Button btnCollarFinobolit;
+    @FXML
+    public Button btnAretescelestial;
+    @FXML
+    public Button btnCadenaEsclava;
+    @FXML
+    public Button btnPulseraArrastrada;
+    @FXML
+    public Button btnPulserasCombLuxury;
+    @FXML
+    public Button btnRelojTissot;
+    @FXML
+    public Button btnComboAretesSweet;
+    @FXML
+    public Button btnDijeOsito;
+    @FXML
+    public Button btnAnilloGoldenLuz;
+    @FXML
+    public Button btnDijeToyota;
+    @FXML
+    public Button btnRelojDolceVita;
+    @FXML
+    public Button btnCadenaGold;
+    @FXML
+    public Button btnAnilloGoldenluz;
+    @FXML
+    public Button btnCollarRama;
+    @FXML
+    public Button btnAretesCoquet;
+    @FXML
+    public Button btnCollarPlataMain;
+    @FXML
+    public Button btnRelojLadyAutomatic;
+    @FXML
+    public Button btnCollarCrisFlower;
+    @FXML
+    public Button btnDijeOsitoenPie;
+    @FXML
+    public Button btnAnilloGreenPow;
+    @FXML
+    public Button btnCollarLuzFugaz;
+    @FXML
+    public Button btnAretesBoldHuggies;
+    @FXML
+    public Button btnCadenaSingapur;
+    @FXML
+    public Button btnAnilloFlowers;
+    @FXML
+    public Button btnPulseraDestello;
+    @FXML
+    public Button btnCollarPearl;
+
     
+    //-------------Pa los toogleButtons------------------//
+    
+    
+    @FXML
+    public ToggleButton btnFavAnilloRoyalStar;
+    @FXML
+    public ToggleButton btnFavPulseraCrazy;
+    @FXML
+    public ToggleButton btnFavAretesNudoGold;
+    @FXML
+    public ToggleButton btnFavCadenaItaliana;
+    @FXML
+    public ToggleButton btnFavCollarGalaxy;
+    @FXML
+    public ToggleButton btnFavPulseraVanCleef;
+    @FXML
+    public ToggleButton btnFavDijeMar;
+    @FXML
+    public ToggleButton btnFavRelojConquest;
+    @FXML
+    public ToggleButton btnFavDijeOsoPanda;
+    @FXML
+    public ToggleButton btnFavAnilloChaosDouble;
+    @FXML
+    public ToggleButton btnFavCollarFinobolit;
+    @FXML
+    public ToggleButton btnFavAretescelestial;
+    @FXML
+    public ToggleButton btnFavCadenaEsclava;
+    @FXML
+    public ToggleButton btnFavPulseraArrastrada;
+    @FXML
+    public ToggleButton btnFavPulserasCombLuxury;
+    @FXML
+    public ToggleButton btnFavRelojTissot;
+    @FXML
+    public ToggleButton btnFavComboAretesSweet;
+    @FXML
+    public ToggleButton btnFavDijeOsito;
+    @FXML
+    public ToggleButton btnFavAnilloGoldenLuz;
+    @FXML
+    public ToggleButton btnFavDijeToyota;
+    @FXML
+    public ToggleButton btnFavRelojDolceVita;
+    @FXML
+    public ToggleButton btnFavCadenaGold;
+    @FXML
+    public ToggleButton btnFavAnilloGoldenluz;
+    @FXML
+    public ToggleButton btnFavCollarRama;
+    @FXML
+    public ToggleButton btnFavAretesCoquet;
+    @FXML
+    public ToggleButton btnFavCollarPlataMain;
+    @FXML
+    public ToggleButton btnFavRelojLadyAutomatic;
+    @FXML
+    public ToggleButton btnFavCollarCrisFlower;
+    @FXML
+    public ToggleButton btnFavDijeOsitoenPie;
+    @FXML
+    public ToggleButton btnFavAnilloGreenPow;
+    @FXML
+    public ToggleButton btnFavCollarLuzFugaz;
+    @FXML
+    public ToggleButton btnFavAretesBoldHuggies;
+    @FXML
+    public ToggleButton btnFavCadenaSingapur;
+    @FXML
+    public ToggleButton btnFavAnilloFlowers;
+    @FXML
+    public ToggleButton btnFavPulseraDestello;
+    @FXML
+    public ToggleButton btnFavCollarPearl;
+
 }
