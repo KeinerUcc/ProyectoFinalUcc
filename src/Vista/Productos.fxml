@@ -70,12 +70,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnAnilloRoyalStar" layoutX="58.0" layoutY="709.0" mnemonicParsing="false" onAction="#AnilloRoyalStar" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: transparent;">
+            <Button fx:id="btnAnilloRoyalStar" layoutX="55.0" layoutY="708.0" mnemonicParsing="false" onAction="#AnilloRoyalStar" prefHeight="31.0" prefWidth="172.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="304.0" layoutY="709.0" mnemonicParsing="false" onAction="#PulseraCrazy" opacity="0.0" prefHeight="26.0" prefWidth="167.0" text="Button">
+            <Button fx:id="btnPulseraCrazy" layoutX="304.0" layoutY="709.0" mnemonicParsing="false" onAction="#PulseraCrazy" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: transparent;" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -120,7 +120,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnCambiarAProductos3" layoutX="298.0" layoutY="1637.0" mnemonicParsing="false" onAction="#cambiarAProductos2" opacity="0.0" prefHeight="26.0" prefWidth="16.0" text="Button">
+            <Button fx:id="btnCambiarAProductos3" layoutX="298.0" layoutY="1637.0" mnemonicParsing="false" onAction="#cambiarAProductos3" opacity="0.0" prefHeight="26.0" prefWidth="16.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -128,7 +128,7 @@
             <ToggleButton fx:id="btnFavCadenaItaliana" layoutX="192.0" layoutY="1156.0" mnemonicParsing="false" onAction="#añadirFavCadenaItaliana" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
             <ToggleButton fx:id="btnFavAretesNudoGold" layoutX="685.0" layoutY="751.0" mnemonicParsing="false" onAction="#añadirFavAretesNudoGold" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
             <ToggleButton fx:id="btnFavPulseraCrazy" layoutX="439.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavPulseraCrazy" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
-            <ToggleButton fx:id="btnFavAnilloRoyalStar" layoutX="191.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavAnilloRoyalStar" opacity="0.0" prefHeight="28.0" prefWidth="35.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavAnilloRoyalStar" layoutX="191.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavAnilloRoyalStar" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
             <ToggleButton fx:id="btnFavPulseraVanCleef" layoutX="685.0" layoutY="1160.0" mnemonicParsing="false" onAction="#añadirFavPulseraVanCleef" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
             <ToggleButton fx:id="btnFavDijeMar" layoutX="189.0" layoutY="1562.0" mnemonicParsing="false" onAction="#añadirFavDijeMar" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
             <ToggleButton fx:id="btnFavRelojConquest" layoutX="438.0" layoutY="1562.0" mnemonicParsing="false" onAction="#añadirFavRelojConquest" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
@@ -144,16 +144,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Pane fx:id="PaneCarrito" layoutX="345.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="431.0" style="-fx-background-color: black;" visible="false">
+            <Pane fx:id="PaneCarrito" layoutX="310.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="466.0" style="-fx-background-color: black;" visible="false">
                <children>
                   <ImageView fitHeight="75.0" fitWidth="395.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Imagenes/carrito.png" />
                      </image>
                   </ImageView>
-                  <ScrollPane fx:id="ScrollPaneCarrito" layoutX="-1.0" layoutY="102.0" prefHeight="583.0" prefWidth="431.0" style="-fx-background-color: black;">
+                  <ScrollPane fx:id="ScrollPaneCarrito" layoutX="-1.0" layoutY="102.0" prefHeight="583.0" prefWidth="466.0" style="-fx-background-color: black;">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="583.0" prefWidth="431.0" style="-fx-background-color: black;" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="583.0" prefWidth="466.0" style="-fx-background-color: black;" />
                      </content>
                   </ScrollPane>
                   <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#volver" opacity="0.0" prefHeight="25.0" prefWidth="72.0" />
@@ -177,9 +177,9 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <ScrollPane fx:id="scrollHistorial" layoutX="-1.0" layoutY="146.0" prefHeight="670.0" prefWidth="775.0">
+                        <ScrollPane fx:id="scrollHistorial" layoutX="-1.0" layoutY="146.0" prefHeight="521.0" prefWidth="775.0">
                            <content>
-                              <AnchorPane fx:id="anchorPanePedidos" minHeight="0.0" minWidth="0.0" prefHeight="670.0" prefWidth="775.0" style="-fx-background-color: black;" />
+                              <AnchorPane fx:id="anchorPanePedidos" minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="775.0" style="-fx-background-color: black;" />
                            </content>
                         </ScrollPane>
                      </children>
