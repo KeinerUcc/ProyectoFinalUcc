@@ -95,7 +95,7 @@ public class ControladorTienda extends Productos {
             Producto dijeToyota,
             Producto relojDolceVita,
             Producto cadenaGold,
-            Producto anilloGoldenluz,
+            Producto anilloGoldenNature,
             Producto collarRama,
             Producto aretesCoquet,
             Producto collarPlataMain,
@@ -132,7 +132,7 @@ public class ControladorTienda extends Productos {
         this.DijeToyota = dijeToyota;
         this.RelojDolceVita = relojDolceVita;
         this.CadenaGold = cadenaGold;
-        this.AnilloGoldenluz = anilloGoldenluz;
+        this.AnilloGoldenNature = anilloGoldenNature;
         this.CollarRama = collarRama;
         this.AretesCoquet = aretesCoquet;
         this.CollarPlataMain = collarPlataMain;
@@ -871,7 +871,7 @@ public class ControladorTienda extends Productos {
                 this.CadenaEsclava, this.PulseraArrastrada, this.PulserasCombLuxury,
                 this.RelojTissot, this.ComboAretesSweet, this.DijeOsito,
                 this.AnilloGoldenLuz, this.DijeToyota, this.RelojDolceVita,
-                this.CadenaGold, this.AnilloGoldenluz, this.CollarRama,
+                this.CadenaGold, this.AnilloGoldenNature, this.CollarRama,
                 this.AretesCoquet, this.CollarPlataMain, this.RelojLadyAutomatic,
                 this.CollarCrisFlower, this.DijeOsitoenPie, this.AnilloGreenPow,
                 this.CollarLuzFugaz, this.AretesBoldHuggies, this.CadenaSingapur,
@@ -914,7 +914,7 @@ public class ControladorTienda extends Productos {
         productoToToggle.put(DijeToyota, btnFavDijeToyota);
         productoToToggle.put(RelojDolceVita, btnFavRelojDolceVita);
         productoToToggle.put(CadenaGold, btnFavCadenaGold);
-        productoToToggle.put(AnilloGoldenluz, btnFavAnilloGoldenluz);
+        productoToToggle.put(AnilloGoldenNature, btnFavAnilloGoldenNature);
         productoToToggle.put(CollarRama, btnFavCollarRama);
         productoToToggle.put(AretesCoquet, btnFavAretesCoquet);
         productoToToggle.put(CollarPlataMain, btnFavCollarPlataMain);
@@ -1005,7 +1005,7 @@ public class ControladorTienda extends Productos {
         setImagenFavorito(btnFavDijeToyota, coraLleno);
         setImagenFavorito(btnFavRelojDolceVita, coraLleno);
         setImagenFavorito(btnFavCadenaGold, coraLleno);
-        setImagenFavorito(btnFavAnilloGoldenluz, coraLleno);
+        setImagenFavorito(btnFavAnilloGoldenNature, coraLleno);
         setImagenFavorito(btnFavCollarRama, coraLleno);
         setImagenFavorito(btnFavAretesCoquet, coraLleno);
         setImagenFavorito(btnFavCollarPlataMain, coraLleno);
@@ -1130,8 +1130,8 @@ public class ControladorTienda extends Productos {
         añadirCarrito(CadenaGold);
     }
 
-    public void AnilloGoldenluz() {
-        añadirCarrito(AnilloGoldenluz);
+    public void AnilloGoldenNature() {
+        añadirCarrito(AnilloGoldenNature);
     }
 
     public void CollarRama() {
@@ -1288,6 +1288,22 @@ public class ControladorTienda extends Productos {
     @FXML
     public void añadirFavAnilloGoldenLuz() {
         añadirFav(btnFavAnilloGoldenLuz, AnilloGoldenLuz);
+    }
+    @FXML
+    public void añadirFavDijeToyota() {
+        añadirFav(btnFavDijeToyota, DijeToyota);
+    }
+    @FXML
+    public void añadirFavRelojDolceVita() {
+        añadirFav(btnFavRelojDolceVita, RelojDolceVita);
+    }
+    @FXML
+    public void añadirFavCadenaGold() {
+        añadirFav(btnFavCadenaGold, CadenaGold);
+    }
+    @FXML
+    public void añadirFavAnilloGoldenNature() {
+        añadirFav(btnFavAnilloGoldenNature, AnilloGoldenNature);
     }
 
     @FXML
