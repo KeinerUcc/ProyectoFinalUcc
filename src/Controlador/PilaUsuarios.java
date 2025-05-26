@@ -18,6 +18,7 @@ public class PilaUsuarios {
         tope = null;
     }
 
+
     public boolean getEsVacia() {
         return tope == null ? true : false;
         /*
@@ -40,8 +41,8 @@ public class PilaUsuarios {
         }
     }
 
-    public void aggUsuario(String usuario, String contra) {
-        Usuario user = new Usuario(usuario, contra);
+    public void aggUsuario(String usuario, String contra, String nombre, String correo) {
+        Usuario user = new Usuario(usuario, contra, nombre, correo);
         Nodo<Usuario> nuevoNodo = new Nodo(user);
 
         if (getEsVacia()) {
@@ -70,4 +71,24 @@ public class PilaUsuarios {
         } while (p != tope);
         return false;
     }
+
+    public Usuario obtenerUsuario(String usuario, String contra) {
+        if (getEsVacia()) {
+            return null;
+        }
+
+        Nodo<Usuario> p = tope;
+        usuario = usuario.trim();
+        contra = contra.trim();
+
+        do {
+            if (p.dato.user.equals(usuario) && p.dato.contra.equals(contra)) {
+                return p.dato;
+            }
+            p = p.sig;
+        } while (p != tope);
+
+        return null;
+    }
 }
+

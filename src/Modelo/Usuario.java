@@ -9,11 +9,16 @@ package Modelo;
  * @author DELL
  */
 public class Usuario {
+
     public String user;
     public String contra;
+    public String nombre;
+    public String correo;
 
-    public Usuario(String user, String contra) {
+    public Usuario(String user, String contra, String nombre, String correo) {
         this.user = user;
         this.contra = contra;
+        this.nombre = nombre;
+        this.correo = correo;
     }
 }

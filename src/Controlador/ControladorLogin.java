@@ -32,7 +32,11 @@ public class ControladorLogin {
     PilaUsuarios pila;
 
     public ControladorLogin() {
-        pila = new PilaUsuarios();
+        this.pila = new PilaUsuarios();
+    }
+
+    public void setPilaUsuarios(PilaUsuarios pila) {
+        this.pila = pila;
     }
 
     @FXML
@@ -54,20 +58,15 @@ public class ControladorLogin {
     @FXML
     public CheckBox checkbox;
 
-    public void setListaUsuarios(PilaUsuarios lista) {
-        pila = lista;
-    }
-
     public void cambiarEscena(Event event, String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();
 
         ControladorLogin controlador = loader.getController();
-        controlador.setListaUsuarios(this.pila);
+        controlador.setPilaUsuarios(this.pila);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+        stage.setScene(new Scene(root));
         stage.show();
     }
 
@@ -87,7 +86,7 @@ public class ControladorLogin {
         } else if (!checkbox.isSelected()) {
             mostrarAlerta("Error", "Debe aceptar los terminos y condiciones", AlertType.ERROR);
         } else {
-            pila.aggUsuario(usuario, contraseña);
+            pila.aggUsuario(usuario, contraseña, nom, Correo);
             mostrarAlerta("Éxito", "Usuario registrado correctamente", AlertType.INFORMATION);
             cambiarEscena(event, "/Vista/login.fxml");
         }
@@ -110,31 +109,34 @@ public class ControladorLogin {
 
         if (user.isEmpty() || contra.isEmpty()) {
             mostrarAlerta("Error", "Debe llenar todos los campos", AlertType.ERROR);
-        } else if (pila.validacion(user, contra)) {
-            Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setTitle("Confirmación");
-            alert.setContentText("Inicio de sesion exitoso, ¿deseas continuar?");
-
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                Stage stageLogin = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/inicio.fxml"));
-                Parent root = loader.load();
-
-                Stage stageTienda = new Stage();
-                stageTienda.setScene(new Scene(root));
-                stageTienda.show();
-
-                stageLogin.close();
-            } else {
-                usuarioLogin.clear();
-                contraseñaLogin.clear();
-            }
         } else {
-            mostrarAlerta("Error", "Cuenta no encontrada", AlertType.ERROR);
-            usuarioLogin.clear();
-            contraseñaLogin.clear();
+            Usuario usuario = pila.obtenerUsuario(user, contra);
+
+            if (usuario != null) {
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Confirmación");
+                alert.setContentText("Inicio de sesión exitoso, ¿deseas continuar?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/inicio.fxml"));
+                    Parent root = loader.load();
+
+                    ControladorTienda controlador = loader.getController();
+                    controlador.setUsuario(usuario);
+                    controlador.setPilaUsuarios(this.pila);
+
+                    Stage stageTienda = new Stage();
+                    stageTienda.setScene(new Scene(root));
+                    stageTienda.show();
+
+                    Stage stageLogin = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stageLogin.close();
+                }
+            } else {
+                mostrarAlerta("Error", "Cuenta no encontrada", AlertType.ERROR);
+            }
         }
     }
 

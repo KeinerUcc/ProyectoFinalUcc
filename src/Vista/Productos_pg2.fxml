@@ -12,9 +12,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1700.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1700.0" prefWidth="0.0">
          <children>
@@ -23,8 +24,9 @@
                   <Image url="@../Imagenes/P2.png" />
                </image>
             </ImageView>
-            <Pane fx:id="panelPostCarrito2" layoutX="10.0" layoutY="24.0" opacity="0.0" prefHeight="1760.0" prefWidth="774.0" style="-fx-background-color: black;" />
-            <Pane fx:id="panelMenu" layoutX="576.0" layoutY="93.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="161.0" prefWidth="153.0" style="-fx-background-color: #AAA283;" visible="false">
+            <Circle fx:id="circuloCarrito" fill="WHITE" layoutX="3.0" layoutY="11.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" translateX="750.0" translateY="10.0" />
+            <Pane fx:id="panelPostCarrito2" layoutX="-1.0" opacity="0.0" prefHeight="1700.0" prefWidth="774.0" style="-fx-background-color: black;" />
+            <Pane fx:id="panelMenu" layoutX="566.0" layoutY="86.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="161.0" prefWidth="153.0" style="-fx-background-color: #AAA283;" visible="false">
                <children>
                   <Button layoutX="29.0" layoutY="20.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: #4A3A18;" text="PERFIL" textFill="WHITE">
                      <font>
@@ -93,7 +95,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnCadenaEsclava" layoutX="58.0" layoutY="1118.0" mnemonicParsing="false" onAction="#CadenaEsclava" prefHeight="23.0" prefWidth="168.0" style="-fx-background-color: trnasparent;">
+            <Button fx:id="btnCadenaEsclava" layoutX="58.0" layoutY="1118.0" mnemonicParsing="false" onAction="#CadenaEsclava" prefHeight="23.0" prefWidth="168.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -143,15 +145,39 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ToggleButton fx:id="btnFavCollarFinobolit" layoutX="436.0" layoutY="751.0" mnemonicParsing="false" onAction="#añadirFavCollarFinobolit" opacity="0.0" prefHeight="28.0" prefWidth="37.0" />
-            <ToggleButton fx:id="btnFavAnilloChaosDouble" layoutX="191.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavAnilloChaosDouble" opacity="0.0" prefHeight="28.0" prefWidth="37.0" />
-            <ToggleButton fx:id="btnFavCadenaEsclava" layoutX="191.0" layoutY="1157.0" mnemonicParsing="false" onAction="#añadirFavCadenaEsclava" opacity="0.0" prefHeight="28.0" prefWidth="37.0" />
-            <ToggleButton fx:id="btnFavPulseraArrastrada" layoutX="433.0" layoutY="1160.0" mnemonicParsing="false" onAction="#añadirFavPulseraArrastrada" opacity="0.0" prefHeight="28.0" prefWidth="37.0" />
-            <ToggleButton fx:id="btnFavPulserasCombLuxury" layoutX="684.0" layoutY="1159.0" mnemonicParsing="false" onAction="#añadirFavPulserasCombLuxury" opacity="0.0" prefHeight="28.0" prefWidth="37.0" />
-            <ToggleButton fx:id="btnFavDijeOsito" layoutX="682.0" layoutY="1564.0" mnemonicParsing="false" onAction="#añadirFavDijeOsito" opacity="0.0" prefHeight="28.0" prefWidth="37.0" />
-            <ToggleButton fx:id="btnFavComboAretesSweet" layoutX="436.0" layoutY="1563.0" mnemonicParsing="false" onAction="#añadirFavComboAretesSweet" opacity="0.0" prefHeight="28.0" prefWidth="37.0" />
-            <ToggleButton fx:id="btnFavRelojTissot" layoutX="192.0" layoutY="1563.0" mnemonicParsing="false" onAction="#añadirFavRelojTissot" opacity="0.0" prefHeight="28.0" prefWidth="37.0" />
-            <Label fx:id="lblCantidadCarrito" alignment="CENTER_RIGHT" layoutX="729.0" layoutY="8.0" prefHeight="25.0" prefWidth="29.0" text="0">
+            <ToggleButton fx:id="btnFavCollarFinobolit" layoutX="436.0" layoutY="751.0" mnemonicParsing="false" onAction="#añadirFavCollarFinobolit" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #5E472A;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavAnilloChaosDouble" layoutX="191.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavAnilloChaosDouble" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #5E472A;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavCadenaEsclava" layoutX="191.0" layoutY="1157.0" mnemonicParsing="false" onAction="#añadirFavCadenaEsclava" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #5E472A;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavPulseraArrastrada" layoutX="433.0" layoutY="1160.0" mnemonicParsing="false" onAction="#añadirFavPulseraArrastrada" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #5E472A;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavPulserasCombLuxury" layoutX="684.0" layoutY="1159.0" mnemonicParsing="false" onAction="#añadirFavPulserasCombLuxury" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #5E472A;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavDijeOsito" layoutX="682.0" layoutY="1564.0" mnemonicParsing="false" onAction="#añadirFavDijeOsito" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #5E472A;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavComboAretesSweet" layoutX="436.0" layoutY="1563.0" mnemonicParsing="false" onAction="#añadirFavComboAretesSweet" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #5E472A;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavRelojTissot" layoutX="192.0" layoutY="1563.0" mnemonicParsing="false" onAction="#añadirFavRelojTissot" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #5E472A;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <Label fx:id="lblCantidadCarrito" alignment="CENTER_RIGHT" layoutX="739.0" layoutY="5.0" prefHeight="32.0" prefWidth="20.0" text="0">
                <font>
                   <Font size="22.0" />
                </font>
@@ -179,7 +205,7 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <Pane fx:id="PaneCarrito" layoutX="320.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="466.0" style="-fx-background-color: black;" visible="false">
+            <Pane fx:id="PaneCarrito" layoutX="320.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="456.0" style="-fx-background-color: black;" visible="false">
                <children>
                   <ImageView fitHeight="75.0" fitWidth="395.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -194,9 +220,9 @@
                   <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#volver" opacity="0.0" prefHeight="25.0" prefWidth="72.0" />
                </children>
             </Pane>
-            <Pane fx:id="panelDeseos" layoutX="241.0" layoutY="10.0" prefHeight="670.0" prefWidth="544.0" style="-fx-background-color: black;" visible="false">
+            <Pane fx:id="panelDeseos" layoutX="241.0" layoutY="-2.0" prefHeight="682.0" prefWidth="533.0" style="-fx-background-color: black;" visible="false">
                <children>
-                  <AnchorPane id="AnchorPane" layoutX="1.0" layoutY="2.0" prefHeight="670.0" prefWidth="544.0" style="-fx-background-color: black;">
+                  <AnchorPane id="AnchorPane" layoutX="1.0" layoutY="2.0" prefHeight="670.0" prefWidth="533.0" style="-fx-background-color: black;">
                      <children>
                         <ImageView fitHeight="213.0" fitWidth="599.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -204,16 +230,19 @@
                            </image>
                         </ImageView>
                         <Button layoutX="44.0" layoutY="8.0" mnemonicParsing="false" onAction="#volver" opacity="0.0" prefHeight="32.0" prefWidth="86.0" text="Button" />
-                        <ScrollPane fx:id="scrollDeseos" layoutX="-1.0" layoutY="146.0" prefHeight="525.0" prefWidth="544.0">
+                        <ScrollPane fx:id="scrollDeseos" layoutX="-1.0" layoutY="146.0" prefHeight="525.0" prefWidth="534.0">
                            <content>
-                              <AnchorPane fx:id="anchorPanePedidos1" minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="544.0" style="-fx-background-color: black;" />
+                              <AnchorPane fx:id="anchorPanePedidos1" minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="532.0" style="-fx-background-color: black;" />
                            </content>
                         </ScrollPane>
                      </children>
                   </AnchorPane>
                </children>
             </Pane>
-            <ToggleButton fx:id="btnFavAretescelestial" layoutX="683.0" layoutY="753.0" mnemonicParsing="false" onAction="#añadirFavAretescelestial" opacity="0.0" prefHeight="28.0" prefWidth="37.0" />
+            <ToggleButton fx:id="btnFavAretescelestial" layoutX="683.0" layoutY="753.0" mnemonicParsing="false" onAction="#añadirFavAretescelestial" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #5E472A;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
             <Button fx:id="btnCollarFinobolit" layoutX="300.0" layoutY="709.0" mnemonicParsing="false" onAction="#CollarFinobolit" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
