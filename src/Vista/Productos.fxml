@@ -10,9 +10,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1700.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
   <content>
     <AnchorPane fx:id="panePrincipal1" minHeight="0.0" minWidth="0.0" prefHeight="1700.0" prefWidth="0.0">
          <children>
@@ -21,10 +22,11 @@
                   <Image url="@../Imagenes/P1.png" />
                </image>
             </ImageView>
-            <Pane fx:id="panelPostCarrito2" layoutY="14.0" onMouseClicked="#volver" opacity="0.0" prefHeight="1760.0" prefWidth="774.0" style="-fx-background-color: black;" />
+            <Circle fx:id="circuloCarrito" fill="WHITE" layoutX="-4.0" layoutY="10.0" radius="17.0" stroke="BLACK" strokeType="INSIDE" translateX="750.0" translateY="10.0" />
+            <Pane fx:id="panelPostCarrito2" onMouseClicked="#volver" opacity="0.0" prefHeight="1760.0" prefWidth="774.0" style="-fx-background-color: black;" />
             <Pane fx:id="panelMenu" layoutX="566.0" layoutY="83.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="161.0" prefWidth="153.0" style="-fx-background-color: #AAA283;" visible="false">
                <children>
-                  <Button layoutX="29.0" layoutY="20.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: #4A3A18;" text="PERFIL" textFill="WHITE">
+                  <Button layoutX="29.0" layoutY="20.0" mnemonicParsing="false" onAction="#mostrarPerfil" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: #4A3A18;" text="PERFIL" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -132,15 +134,42 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ToggleButton fx:id="btnFavCadenaItaliana" layoutX="192.0" layoutY="1156.0" mnemonicParsing="false" onAction="#añadirFavCadenaItaliana" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
-            <ToggleButton fx:id="btnFavAretesNudoGold" layoutX="685.0" layoutY="751.0" mnemonicParsing="false" onAction="#añadirFavAretesNudoGold" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
-            <ToggleButton fx:id="btnFavPulseraCrazy" layoutX="439.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavPulseraCrazy" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
-            <ToggleButton fx:id="btnFavAnilloRoyalStar" layoutX="191.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavAnilloRoyalStar" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
-            <ToggleButton fx:id="btnFavPulseraVanCleef" layoutX="685.0" layoutY="1160.0" mnemonicParsing="false" onAction="#añadirFavPulseraVanCleef" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
-            <ToggleButton fx:id="btnFavDijeMar" layoutX="189.0" layoutY="1562.0" mnemonicParsing="false" onAction="#añadirFavDijeMar" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
-            <ToggleButton fx:id="btnFavRelojConquest" layoutX="438.0" layoutY="1562.0" mnemonicParsing="false" onAction="#añadirFavRelojConquest" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
-            <ToggleButton fx:id="btnFavCollarGalaxy" layoutX="437.0" layoutY="1156.0" mnemonicParsing="false" onAction="#añadirFavCollarGalaxy" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
-            <ToggleButton fx:id="btnFavDijeOsoPanda" layoutX="685.0" layoutY="1566.0" mnemonicParsing="false" onAction="#añadirFavDijeOsoPanda" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;" />
+            <ToggleButton fx:id="btnFavCadenaItaliana" layoutX="192.0" layoutY="1156.0" mnemonicParsing="false" onAction="#añadirFavCadenaItaliana" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavAretesNudoGold" layoutX="685.0" layoutY="751.0" mnemonicParsing="false" onAction="#añadirFavAretesNudoGold" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavPulseraCrazy" layoutX="439.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavPulseraCrazy" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavAnilloRoyalStar" layoutX="191.0" layoutY="752.0" mnemonicParsing="false" onAction="#añadirFavAnilloRoyalStar" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavPulseraVanCleef" layoutX="685.0" layoutY="1160.0" mnemonicParsing="false" onAction="#añadirFavPulseraVanCleef" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavDijeMar" layoutX="189.0" layoutY="1562.0" mnemonicParsing="false" onAction="#añadirFavDijeMar" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavRelojConquest" layoutX="438.0" layoutY="1562.0" mnemonicParsing="false" onAction="#añadirFavRelojConquest" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavCollarGalaxy" layoutX="437.0" layoutY="1156.0" mnemonicParsing="false" onAction="#añadirFavCollarGalaxy" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="btnFavDijeOsoPanda" layoutX="685.0" layoutY="1566.0" mnemonicParsing="false" onAction="#añadirFavDijeOsoPanda" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
             <Button fx:id="cambiarAProductos4" layoutX="332.0" layoutY="1637.0" mnemonicParsing="false" onAction="#cambiarAProductos4" opacity="0.0" prefHeight="26.0" prefWidth="21.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -151,7 +180,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Pane fx:id="PaneCarrito" layoutX="310.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="466.0" style="-fx-background-color: black;" visible="false">
+            <Pane fx:id="PaneCarrito" layoutX="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="466.0" style="-fx-background-color: black;" visible="false">
                <children>
                   <ImageView fitHeight="75.0" fitWidth="395.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -166,9 +195,9 @@
                   <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#volver" opacity="0.0" prefHeight="25.0" prefWidth="72.0" />
                </children>
             </Pane>
-            <Label fx:id="lblCantidadCarrito" alignment="CENTER_RIGHT" layoutX="729.0" layoutY="5.0" prefHeight="31.0" prefWidth="38.0" text="0">
+            <Label fx:id="lblCantidadCarrito" alignment="CENTER_RIGHT" layoutX="713.0" layoutY="6.0" prefHeight="28.0" prefWidth="40.0" text="0">
                <font>
-                  <Font size="22.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Pane fx:id="panelHistorial" prefHeight="670.0" prefWidth="775.0" style="-fx-background-color: black;" visible="false">
@@ -193,9 +222,9 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <Pane fx:id="panelDeseos" layoutX="231.0" prefHeight="670.0" prefWidth="544.0" style="-fx-background-color: black;" visible="false">
+            <Pane fx:id="panelDeseos" layoutX="239.0" prefHeight="692.0" prefWidth="534.0" style="-fx-background-color: black;" visible="false">
                <children>
-                  <AnchorPane id="AnchorPane" layoutX="1.0" layoutY="2.0" prefHeight="670.0" prefWidth="544.0" style="-fx-background-color: black;">
+                  <AnchorPane id="AnchorPane" layoutX="1.0" layoutY="2.0" prefHeight="670.0" prefWidth="533.0" style="-fx-background-color: black;">
                      <children>
                         <ImageView fitHeight="213.0" fitWidth="599.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -203,9 +232,9 @@
                            </image>
                         </ImageView>
                         <Button layoutX="44.0" layoutY="8.0" mnemonicParsing="false" onAction="#volver" opacity="0.0" prefHeight="32.0" prefWidth="86.0" text="Button" />
-                        <ScrollPane fx:id="scrollDeseos" layoutX="-1.0" layoutY="146.0" prefHeight="525.0" prefWidth="544.0">
+                        <ScrollPane fx:id="scrollDeseos" layoutX="-1.0" layoutY="146.0" prefHeight="525.0" prefWidth="534.0">
                            <content>
-                              <AnchorPane fx:id="anchorPanePedidos1" minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="544.0" style="-fx-background-color: black;" />
+                              <AnchorPane fx:id="anchorPanePedidos1" minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="532.0" style="-fx-background-color: black;" />
                            </content>
                         </ScrollPane>
                      </children>

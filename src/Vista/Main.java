@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Controlador.ControladorLogin;
+import Controlador.PilaUsuarios;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -19,10 +21,11 @@ import javafx.stage.Stage;
  * @author DELL
  */
 public class Main extends Application {
+    
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml")); 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/login.fxml")); 
             Parent root = loader.load();
             
             Scene scene = new Scene(root);
