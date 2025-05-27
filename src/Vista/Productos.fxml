@@ -43,7 +43,7 @@
                   </Button>
                </children>
             </Pane>
-            <Button layoutX="268.0" layoutY="48.0" mnemonicParsing="false" opacity="0.0" text="Button">
+            <Button fx:id="btnInicio" layoutX="268.0" layoutY="48.0" mnemonicParsing="false" opacity="0.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -53,22 +53,22 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="573.0" layoutY="33.0" mnemonicParsing="false" opacity="0.0" prefHeight="41.0" prefWidth="46.0" text="Button">
+            <Button layoutX="573.0" layoutY="33.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="46.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="619.0" layoutY="33.0" mnemonicParsing="false" onAction="#mostrarMenu" opacity="0.0" prefHeight="41.0" prefWidth="46.0" text="Button">
+            <Button fx:id="btnMenu" layoutX="619.0" layoutY="33.0" mnemonicParsing="false" onAction="#mostrarMenu" prefHeight="41.0" prefWidth="46.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="665.0" layoutY="33.0" mnemonicParsing="false" onAction="#mostrarDeseos" opacity="0.0" prefHeight="42.0" prefWidth="42.0" text="Button">
+            <Button fx:id="btnDeseos" layoutX="665.0" layoutY="33.0" mnemonicParsing="false" onAction="#mostrarDeseos" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="714.0" layoutY="33.0" mnemonicParsing="false" onAction="#mostrarCarrito" opacity="0.0" prefHeight="42.0" prefWidth="42.0" text="Button">
+            <Button fx:id="btnCarrito" layoutX="714.0" layoutY="33.0" mnemonicParsing="false" onAction="#mostrarCarrito" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

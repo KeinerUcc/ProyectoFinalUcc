@@ -17,9 +17,11 @@ import Modelo.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -28,6 +30,8 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBase;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
@@ -75,7 +79,7 @@ public class ControladorTienda extends Productos {
 
     @FXML
     public void mostrarPerfil() {
-        // Crear campos y hacerlos no editables
+
         TextField campoNombre = new TextField(usuarioActual.nombre);
         campoNombre.setEditable(false);
         TextField campoCorreo = new TextField(usuarioActual.correo);
@@ -88,24 +92,21 @@ public class ControladorTienda extends Productos {
 
         TextField[] campos = {campoNombre, campoCorreo, campoUsuario, campoContra};
 
-        // Estilo base de los campos
         String estiloCampos = "-fx-font-size: 20px; -fx-background-color: #222; -fx-text-fill: white; "
                 + "-fx-border-color: #444; -fx-border-radius: 10px; -fx-background-radius: 10px;";
 
-        // Efectos para hover
         DropShadow sombraHover = new DropShadow(20, javafx.scene.paint.Color.CYAN);
         Glow glowHover = new Glow(0.4);
 
         for (TextField campo : campos) {
             campo.setStyle(estiloCampos);
-            campo.setFocusTraversable(false); // para que no se iluminen con tabulación
+            campo.setFocusTraversable(false);
             campo.setOnMouseEntered(e -> campo.setEffect(new javafx.scene.effect.Blend(
                     javafx.scene.effect.BlendMode.SRC_OVER, glowHover, sombraHover
             )));
             campo.setOnMouseExited(e -> campo.setEffect(null));
         }
 
-        // Labels con estilo
         Label lblNombre = new Label("Nombre:");
         Label lblCorreo = new Label("Correo:");
         Label lblUsuario = new Label("Usuario:");
@@ -116,7 +117,6 @@ public class ControladorTienda extends Productos {
             lbl.setStyle("-fx-font-size: 20px; -fx-text-fill: white;");
         }
 
-        // Botón cerrar con efectos
         Button btnCerrar = new Button("Cerrar");
         btnCerrar.setStyle("-fx-font-size: 20px; -fx-background-color: #333; -fx-text-fill: white; "
                 + "-fx-background-radius: 10px; -fx-border-color: #555; -fx-border-radius: 10px;");
@@ -124,7 +124,6 @@ public class ControladorTienda extends Productos {
         btnCerrar.setOnMouseExited(e -> btnCerrar.setEffect(null));
         btnCerrar.setOnAction(e -> ((Stage) btnCerrar.getScene().getWindow()).close());
 
-        // Layout principal
         VBox layout = new VBox(20);
         layout.setPadding(new Insets(30));
         layout.setAlignment(Pos.CENTER);
@@ -246,18 +245,6 @@ public class ControladorTienda extends Productos {
         inicializarMapeoProductos();
     }
 
-    public Nodo<Producto> getUltimo() {
-        if (cabezaCarrito == null) {
-            return null;
-        } else {
-            Nodo<Producto> p = cabezaCarrito;
-            while (p.sig != null) {
-                p = p.sig;
-            }
-            return p;
-        }
-    }
-
     public Nodo<Producto> getFinHistorial() {
         if (inicioHistorial == null) {
             return null;
@@ -364,47 +351,31 @@ public class ControladorTienda extends Productos {
     }
 
     public void eliminarDelCarrito(Producto producto) {
-        // Determinar el controlador activo
-        ControladorTienda controlador = (ControladorPrincipal != null) ? ControladorPrincipal : this;
-        Nodo<Producto> cabezaLista = (controlador != null) ? controlador.cabezaCarrito : this.cabezaCarrito;
-
-        if (cabezaLista == null) {
-            return; // Lista vacía, nada que eliminar
+        Nodo<Producto> cabezaActual;
+        if (ControladorPrincipal != null) {
+            cabezaActual = ControladorPrincipal.cabezaCarrito;
+        } else {
+            cabezaActual = cabezaCarrito;
         }
-
-        Nodo<Producto> nodoAEliminar = null;
-        Nodo<Producto> actual = cabezaLista;
-
-        // Buscar el nodo a eliminar
-        while (actual != null) {
-            if (actual.dato != null && actual.dato.equals(producto)) {
-                nodoAEliminar = actual;
-                break; // Encontrado, salir del bucle
-            }
-            actual = actual.sig;
-        }
-
-        if (nodoAEliminar == null) {
+        if (cabezaActual == null) {
             return;
         }
 
-        if (nodoAEliminar == cabezaLista) {
-            if (controlador != null) {
-                controlador.cabezaCarrito = cabezaLista.sig;
+        if (cabezaActual.dato.equals(producto)) {
+            if (ControladorPrincipal != null) {
+                ControladorPrincipal.cabezaCarrito = cabezaActual.sig;
             } else {
-                this.cabezaCarrito = cabezaLista.sig;
+                cabezaCarrito = cabezaActual.sig;
             }
         } else {
-            // Eliminar nodo intermedio o final
-            Nodo<Producto> anterior = getAntesNodo(nodoAEliminar);
-            if (anterior != null) {
-                anterior.sig = nodoAEliminar.sig;
+            Nodo<Producto> actual = cabezaActual;
+            while (actual.sig != null && !actual.sig.dato.equals(producto)) {
+                actual = actual.sig;
+            }
+            if (actual.sig != null) {
+                actual.sig = actual.sig.sig;
             }
         }
-
-        nodoAEliminar.sig = null;
-        nodoAEliminar.dato = null;
-
         actualizarContadorCarrito();
     }
 
@@ -536,8 +507,7 @@ public class ControladorTienda extends Productos {
 
                     Label precioTotal = new Label(String.format("Total: $%,.2f",
                             productoActual.precio * nodoFinal.cantidad));
-                    precioTotal.setStyle("-fx-text-fill: #2e8b57; -fx-font-weight: bold; "
-                            + "-fx-font-size: 12px;");
+                    precioTotal.setStyle("-fx-text-fill: #2e8b57; -fx-font-weight: bold; -fx-font-size: 12px;");
 
                     Button btnEliminar = new Button("Eliminar");
                     btnEliminar.setStyle("-fx-background-color: #ff4444; -fx-text-fill: white;");
@@ -588,33 +558,14 @@ public class ControladorTienda extends Productos {
                 btnComprar.setEffect(null);
                 zoomButton(btnComprar, 1.0);
             });
+
             btnComprar.setOnAction(e -> {
                 if (listaCarrito == null) {
                     Alert alerta = new Alert(Alert.AlertType.WARNING, "El carrito está vacío");
                     alerta.getDialogPane().setEffect(shadow);
                     alerta.showAndWait();
                 } else {
-                    Nodo<Producto> productoActual = listaCarrito;
-                    while (productoActual != null) {
-                        for (int i = 0; i < productoActual.cantidad; i++) {
-                            añadirHistorial(productoActual.dato);
-                        }
-                        productoActual = productoActual.sig;
-                    }
-                    guardarHistorialEnArchivo();
-                    Alert alerta = new Alert(Alert.AlertType.INFORMATION,
-                            "¡Compra exitosa! Total: $" + calcularTotal());
-                    alerta.getDialogPane().setEffect(shadow);
-                    alerta.showAndWait();
-
-                    // Limpiar el carrito del controlador correcto
-                    if (controlador != null) {
-                        controlador.cabezaCarrito = null;
-                    } else {
-                        this.cabezaCarrito = null;
-                    }
-                    mostrarCarrito();
-                    actualizarContadorCarrito();
+                    mostrarFormularioPago();
                 }
             });
 
@@ -1006,6 +957,127 @@ public class ControladorTienda extends Productos {
     }
 
     @FXML
+    public void mostrarFormularioPago() {
+        String estiloCampos = "-fx-font-size: 16px; -fx-background-color: #f0f0f0; -fx-text-fill: black; "
+                + "-fx-border-color: #ccc; -fx-border-radius: 5px; -fx-background-radius: 5px;";
+
+        Label lblNombreTitular = new Label("Nombre del Titular:");
+        TextField campoNombreTitular = new TextField();
+        campoNombreTitular.setPromptText("Ingrese el nombre del titular");
+        campoNombreTitular.setStyle(estiloCampos);
+
+        Label lblNumeroTarjeta = new Label("Número de Tarjeta:");
+        TextField campoNumeroTarjeta = new TextField();
+        campoNumeroTarjeta.setPromptText("Ingrese el número de tarjeta");
+        campoNumeroTarjeta.setStyle(estiloCampos);
+
+        Label lblFechaVencimiento = new Label("Fecha de expiracion:");
+        ComboBox<String> comboMes = new ComboBox<>();
+        comboMes.setPromptText("Mes");
+        comboMes.getItems().addAll("01", "02", "03", "04", "05", "06",
+                "07", "08", "09", "10", "11", "12");
+        comboMes.setStyle(estiloCampos);
+
+        ComboBox<String> comboAnio = new ComboBox<>();
+        comboAnio.setPromptText("Año");
+        int anioActual = LocalDate.now().getYear();
+        for (int i = 0; i < 10; i++) {
+            comboAnio.getItems().add(String.valueOf(anioActual + i));
+        }
+        comboAnio.setStyle(estiloCampos);
+
+        HBox boxVencimiento = new HBox(10, comboMes, comboAnio);
+        boxVencimiento.setAlignment(Pos.CENTER_LEFT);
+
+        Label lblCVV = new Label("CVV:");
+        TextField campoCVV = new TextField();
+        campoCVV.setPromptText("Ingrese el CVV");
+        campoCVV.setStyle(estiloCampos);
+
+        Label lblDireccion = new Label("Dirección de Envío:");
+        TextField campoDireccion = new TextField();
+        campoDireccion.setPromptText("Ingrese la dirección de envío");
+        campoDireccion.setStyle(estiloCampos);
+
+        Button btnPagar = new Button("Pagar");
+        btnPagar.setStyle("-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white; "
+                + "-fx-background-radius: 5px; -fx-border-color: #388E3C; -fx-border-radius: 5px;");
+        btnPagar.setOnMouseEntered(e -> btnPagar.setEffect(new DropShadow(10, Color.LIME)));
+        btnPagar.setOnMouseExited(e -> btnPagar.setEffect(null));
+
+        btnPagar.setOnAction(e -> {
+            if (campoNombreTitular.getText().isEmpty() || campoNumeroTarjeta.getText().isEmpty()
+                    || comboMes.getValue() == null || comboAnio.getValue() == null
+                    || campoCVV.getText().isEmpty() || campoDireccion.getText().isEmpty()) {
+                Alert alerta = new Alert(Alert.AlertType.WARNING);
+                alerta.setTitle("Campos incompletos");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Por favor, complete todos los campos.");
+                alerta.showAndWait();
+                return;
+            }
+
+            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmacion.setTitle("Confirmar Pago");
+            confirmacion.setHeaderText(null);
+            confirmacion.setContentText("¿Desea confirmar el pago?");
+            Optional<ButtonType> resultado = confirmacion.showAndWait();
+
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                ControladorTienda controlador = (ControladorPrincipal != null) ? ControladorPrincipal : this;
+                Nodo<Producto> listaCarrito = (controlador != null) ? controlador.cabezaCarrito : this.cabezaCarrito;
+
+                Nodo<Producto> productoActual = listaCarrito;
+                while (productoActual != null) {
+                    for (int i = 0; i < productoActual.cantidad; i++) {
+                        añadirHistorial(productoActual.dato);
+                    }
+                    productoActual = productoActual.sig;
+                }
+
+                guardarHistorialEnArchivo();
+
+                if (controlador != null) {
+                    controlador.cabezaCarrito = null;
+                } else {
+                    this.cabezaCarrito = null;
+                }
+
+                actualizarContadorCarrito();
+                mostrarCarrito();
+
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("Pago realizado");
+                alerta.setHeaderText(null);
+                alerta.setContentText("¡Gracias por tu compra!");
+                alerta.showAndWait();
+
+                ((Stage) btnPagar.getScene().getWindow()).close();
+            }
+        });
+
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(20));
+        layout.setAlignment(Pos.CENTER_LEFT);
+        layout.setStyle("-fx-background-color: white;");
+        layout.getChildren().addAll(
+                lblNombreTitular, campoNombreTitular,
+                lblNumeroTarjeta, campoNumeroTarjeta,
+                lblFechaVencimiento, boxVencimiento,
+                lblCVV, campoCVV,
+                lblDireccion, campoDireccion,
+                btnPagar
+        );
+
+        Scene escena = new Scene(layout, 400, 500);
+        Stage ventanaPago = new Stage();
+        ventanaPago.setTitle("Formulario de Pago");
+        ventanaPago.setScene(escena);
+        ventanaPago.initModality(Modality.APPLICATION_MODAL);
+        ventanaPago.show();
+    }
+
+    @FXML
     public void volver() {
         PaneCarrito.setVisible(false);
         panelPostCarrito2.setOpacity(0);
@@ -1145,6 +1217,10 @@ public class ControladorTienda extends Productos {
         aplicarEfecto(btnAnilloFlowers);
         aplicarEfecto(btnPulseraDestello);
         aplicarEfecto(btnCollarPearl);
+       
+        aplicarEfecto(btnMenu);
+        aplicarEfecto(btnDeseos);
+        aplicarEfecto(btnCarrito);
     }
 
     public void aplicarEfecto(Button boton) {
@@ -1628,4 +1704,7 @@ public class ControladorTienda extends Productos {
     public ScrollPane scrollDeseos;
     public static final Map<Producto, ToggleButton> productoToToggle = new HashMap<>();
     public Image coraLleno = new Image(getClass().getResourceAsStream("/Imagenes/coraLleno.png"));
+    public Button btnMenu;
+    public Button btnDeseos;
+    public Button btnCarrito;
 }
