@@ -25,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/login.fxml")); 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/productos.fxml")); 
             Parent root = loader.load();
             
             Scene scene = new Scene(root);

@@ -22,7 +22,6 @@
                </image>
             </ImageView>
             <Pane fx:id="panelPostCarrito2" onMouseClicked="#volver" opacity="0.0" prefHeight="1760.0" prefWidth="774.0" style="-fx-background-color: black;" />
-            <Circle fx:id="circuloCarrito" fill="WHITE" layoutX="3.0" layoutY="11.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" translateX="750.0" translateY="10.0" />
             <Button layoutX="261.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="22.0" prefWidth="56.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -38,17 +37,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="615.0" layoutY="37.0" mnemonicParsing="false" onAction="#mostrarMenu" opacity="0.0" prefHeight="42.0" prefWidth="40.0" text="Button">
+            <Button fx:id="btnMenu" layoutX="615.0" layoutY="37.0" mnemonicParsing="false" onAction="#mostrarMenu" prefHeight="42.0" prefWidth="40.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="659.0" layoutY="39.0" mnemonicParsing="false" onAction="#mostrarDeseos" opacity="0.0" prefHeight="38.0" prefWidth="43.0" text="Button">
+            <Button fx:id="btnDeseos" layoutX="659.0" layoutY="39.0" mnemonicParsing="false" onAction="#mostrarDeseos" prefHeight="38.0" prefWidth="43.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="711.0" layoutY="37.0" mnemonicParsing="false" onAction="#mostrarCarrito" opacity="0.0" prefHeight="42.0" prefWidth="42.0" text="Button">
+            <Button fx:id="btnCarrito" layoutX="711.0" layoutY="37.0" mnemonicParsing="false" onAction="#mostrarCarrito" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -113,11 +112,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="lblCantidadCarrito" alignment="CENTER_RIGHT" layoutX="739.0" layoutY="5.0" prefHeight="32.0" prefWidth="20.0" text="0">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
             <ToggleButton fx:id="btnFavCollarCrisFlower" layoutX="183.0" layoutY="753.0" mnemonicParsing="false" onAction="#añadirFavCollarCrisFlower" opacity="0.0" prefHeight="28.0" prefWidth="37.0" style="-fx-background-color: #634A2C;">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -230,6 +224,12 @@
                   </Button>
                </children>
             </Pane>
+            <Circle fx:id="circuloCarrito" fill="WHITE" layoutX="-4.0" layoutY="10.0" radius="17.0" stroke="BLACK" strokeType="INSIDE" translateX="750.0" translateY="10.0" />
+            <Label fx:id="lblCantidadCarrito" alignment="CENTER_RIGHT" layoutX="713.0" layoutY="6.0" prefHeight="28.0" prefWidth="40.0" text="0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </content>
 </ScrollPane>
