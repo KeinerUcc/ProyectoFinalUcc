@@ -380,7 +380,7 @@ public class ControladorTienda extends Productos {
     }
 
     public void añadirHistorial(Producto producto) {
-        Nodo<Producto> nuevoNodo = new Nodo<>(producto);
+        Nodo<Producto> nodoH = new Nodo(producto);
 
         ControladorTienda controlador;
         if (ControladorPrincipal != null) {
@@ -388,12 +388,15 @@ public class ControladorTienda extends Productos {
         } else {
             controlador = this;
         }
-
         if (controlador.getHistorialEstaVacio()) {
-            controlador.inicioHistorial = nuevoNodo;
+            controlador.inicioHistorial = nodoH;
         } else {
-            Nodo<Producto> fin = controlador.getFinHistorial();
-            fin.sig = nuevoNodo;
+            Nodo<Producto> p = controlador.inicioHistorial;
+            while (p.sig != null) {
+                p = p.sig;
+            }
+            p.sig = nodoH;
+            nodoH.ant = p;
         }
     }
 
@@ -1209,6 +1212,9 @@ public class ControladorTienda extends Productos {
         nuevoControlador.actualizarContadorCarrito();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Imagenes/LOGO GOLDSTYLE.png")));
+
+        stage.setTitle("Tienda Golden Style");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

@@ -29,6 +29,9 @@ public class Main extends Application {
             Parent root = loader.load();
             
             Scene scene = new Scene(root);
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Imagenes/LOGO GOLDSTYLE.png"))); 
+
+            primaryStage.setTitle("Tienda Golden Style");
             primaryStage.setScene(scene);
             primaryStage.show();
         

@@ -21,6 +21,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -161,6 +162,7 @@ public class ControladorLogin {
         }
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Imagenes/LOGO GOLDSTYLE.png")));
         stage.setScene(new Scene(root));
         stage.show();
     }
