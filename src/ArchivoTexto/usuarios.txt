@@ -1,2 +1,3 @@
-freddy,123456,fre,freddy@gmail.com
+camlop,12345,camila lopez,camila2001super@gmail.com
 reyesito,realmadrid15%,José Andrés,reyesjoseandres07
+freddy,123456,fre,freddy@gmail.com

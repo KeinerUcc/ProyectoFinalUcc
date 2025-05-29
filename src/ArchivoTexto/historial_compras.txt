@@ -45,4 +45,3 @@ Producto: Pulsera Crazy | Cantidad: 1 | Precio: $25.000,00 | Total: $25.000,00
 Producto: Aretes Nudo Gold | Cantidad: 1 | Precio: $25.000,00 | Total: $25.000,00
 
 SUBTOTAL: $300.000,00
-====================================

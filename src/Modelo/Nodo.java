@@ -10,12 +10,12 @@ package Modelo;
  */
 public class Nodo<T> {
     public T dato;           
-    public Nodo<T> sig;    
+    public Nodo<T> sig, ant;    
     public int cantidad = 1;
 
     public Nodo(T info) {
         dato = info;
-        sig = null;
+        sig =ant = null;
         
     }
 }
