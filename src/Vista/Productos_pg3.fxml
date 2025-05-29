@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1800.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1700.0" prefWidth="0.0">
          <children>
@@ -22,7 +22,7 @@
                </image>
             </ImageView>
             <Circle fx:id="circuloCarrito" fill="WHITE" layoutX="-4.0" layoutY="10.0" radius="17.0" stroke="BLACK" strokeType="INSIDE" translateX="750.0" translateY="10.0" />
-            <Pane fx:id="panelPostCarrito2" layoutX="1.0" layoutY="-2.0" onMouseClicked="#volver" opacity="0.0" prefHeight="1696.0" prefWidth="776.0" style="-fx-background-color: black;" />
+            <Pane fx:id="panelPostCarrito2" onMouseClicked="#volver" opacity="0.0" prefHeight="1696.0" prefWidth="776.0" style="-fx-background-color: black;" />
             <Button layoutX="268.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="49.0" text="Button">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -268,7 +268,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="14.0" layoutY="109.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #4A3A18;" text="CERRAR SESION" textFill="WHITE">
+                  <Button layoutX="14.0" layoutY="109.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #4A3A18;" text="CERRAR SESION" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
