@@ -229,8 +229,6 @@ public class Productos {
             35000.0,
             "/ImagenesProductos/Collar pearl 36.png");
 
-    
-    
     //-----------Botones pal carrito chichi---------------//
     @FXML
     public Button btnAnilloRoyalStar;
@@ -305,10 +303,7 @@ public class Productos {
     @FXML
     public Button btnCollarPearl;
 
-    
     //-------------Pa los toogleButtons------------------//
-    
-    
     @FXML
     public ToggleButton btnFavAnilloRoyalStar;
     @FXML
@@ -381,5 +376,79 @@ public class Productos {
     public ToggleButton btnFavPulseraDestello;
     @FXML
     public ToggleButton btnFavCollarPearl;
+
+    //-----Boton pa oomprar directo chichi-----//
+    @FXML
+    public Button btnComprarAnilloRoyalStar;
+    @FXML
+    public Button btnComprarPulseraCrazy;
+    @FXML
+    public Button btnComprarAretesNudoGold;
+    @FXML
+    public Button btnComprarCadenaItaliana;
+    @FXML
+    public Button btnComprarCollarGalaxy;
+    @FXML
+    public Button btnComprarPulseraVanCleef;
+    @FXML
+    public Button btnComprarDijeMar;
+    @FXML
+    public Button btnComprarRelojConquest;
+    @FXML
+    public Button btnComprarDijeOsoPanda;
+    @FXML
+    public Button btnComprarAnilloChaosDouble;
+    @FXML
+    public Button btnComprarCollarFinobolit;
+    @FXML
+    public Button btnComprarAretescelestial;
+    @FXML
+    public Button btnComprarCadenaEsclava;
+    @FXML
+    public Button btnComprarPulseraArrastrada;
+    @FXML
+    public Button btnComprarPulserasCombLuxury;
+    @FXML
+    public Button btnComprarRelojTissot;
+    @FXML
+    public Button btnComprarComboAretesSweet;
+    @FXML
+    public Button btnComprarDijeOsito;
+    @FXML
+    public Button btnComprarAnilloGoldenLuz;
+    @FXML
+    public Button btnComprarDijeToyota;
+    @FXML
+    public Button btnComprarRelojDolceVita;
+    @FXML
+    public Button btnComprarCadenaGold;
+    @FXML
+    public Button btnComprarAnilloGoldenNature;
+    @FXML
+    public Button btnComprarCollarRama;
+    @FXML
+    public Button btnComprarAretesCoquet;
+    @FXML
+    public Button btnComprarCollarPlataMain;
+    @FXML
+    public Button btnComprarRelojLadyAutomatic;
+    @FXML
+    public Button btnComprarCollarCrisFlower;
+    @FXML
+    public Button btnComprarDijeOsitoenPie;
+    @FXML
+    public Button btnComprarAnilloGreenPow;
+    @FXML
+    public Button btnComprarCollarLuzFugaz;
+    @FXML
+    public Button btnComprarAretesBoldHuggies;
+    @FXML
+    public Button btnComprarCadenaSingapur;
+    @FXML
+    public Button btnComprarAnilloFlowers;
+    @FXML
+    public Button btnComprarPulseraDestello;
+    @FXML
+    public Button btnComprarCollarPearl;
 
 }

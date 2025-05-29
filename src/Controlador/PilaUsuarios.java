@@ -5,6 +5,12 @@
 package Controlador;
 
 import Modelo.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -17,7 +23,6 @@ public class PilaUsuarios {
     public PilaUsuarios() {
         tope = null;
     }
-
 
     public boolean getEsVacia() {
         return tope == null ? true : false;
@@ -90,5 +95,82 @@ public class PilaUsuarios {
 
         return null;
     }
-}
 
+    public Usuario buscarPorCorreo(String correo) {
+        Nodo<Usuario> temp = tope;
+        if (temp == null) {
+            return null;
+        }
+        do {
+            if (temp.dato.correo.equalsIgnoreCase(correo)) {
+                return temp.dato;
+            }
+            temp = temp.sig;
+        } while (temp != tope);
+        return null;
+    }
+
+    public void actualizarUsuario(Usuario usuario) {
+        Nodo<Usuario> temp = tope;
+        if (temp == null) {
+            return;
+        }
+        do {
+            if (temp.dato.user.equals(usuario.user)) {
+                temp.dato = usuario;
+                break;
+            }
+            temp = temp.sig;
+        } while (temp != tope);
+    }
+
+    public void guardarUsuariosEnArchivo() {
+        try {
+            File carpeta = new File("src/ArchivoTexto");
+            if (!carpeta.exists()) {
+                carpeta.mkdirs();
+            }
+
+            File archivo = new File(carpeta, "usuarios.txt");
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+                if (!getEsVacia()) {
+                    Nodo<Usuario> temp = tope;
+                    do {
+                        Usuario u = temp.dato;
+                        writer.write(u.user + "," + u.contra + "," + u.nombre + "," + u.correo);
+                        writer.newLine();
+                        temp = temp.sig;
+                    } while (temp != tope);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cargarUsuariosDesdeArchivo() {
+        File archivo = new File("src/ArchivoTexto/usuarios.txt");
+        if (!archivo.exists()) {
+            return;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(",");
+                if (partes.length == 4) {
+                    String user = partes[0];
+                    String contra = partes[1];
+                    String nombre = partes[2];
+                    String correo = partes[3];
+                    aggUsuario(user, contra, nombre, correo);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}

@@ -1,0 +1,26 @@
+
+=== NUEVA ENTRADA === Tue May 27 17:30:23 GMT-05:00 2025
+
+El carrito estaba vacío
+
+SUBTOTAL: $0,00
+====================================
+
+=== NUEVA ENTRADA === Tue May 27 18:34:56 GMT-05:00 2025
+
+Producto: Reloj Conquest | Cantidad: 2 | Precio: $450.000,00 | Total: $900.000,00
+
+SUBTOTAL: $900.000,00
+====================================
+
+=== NUEVA ENTRADA === Tue May 27 18:35:56 GMT-05:00 2025
+
+Producto: Anillo Royal Star | Descripción: Anillo con incrustaciones plateadas en forma de estrella en centro | Precio: $25.000,00
+====================================
+
+=== NUEVA ENTRADA === Wed May 28 17:40:11 GMT-05:00 2025
+
+Producto: Dije osito en pie | Cantidad: 1 | Precio: $35.000,00 | Total: $35.000,00
+
+SUBTOTAL: $35.000,00
+====================================

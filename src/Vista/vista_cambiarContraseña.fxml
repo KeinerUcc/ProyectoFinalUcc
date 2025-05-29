@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="220" prefWidth="400" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Controlador.ControladorLogin">
+    <children>
+        <VBox alignment="CENTER" layoutX="50" layoutY="40" prefWidth="300" spacing="20.0">
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Cambiar contraseña" />
+            <TextField fx:id="nuevaContraseña" prefWidth="250" promptText="Ingrese nueva contraseña" />
+            <Button onAction="#cambiarContraseñaFinal" prefWidth="200" text="Confirmar cambio" />
+        </VBox>
+    </children>
+</AnchorPane>
