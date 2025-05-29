@@ -900,30 +900,24 @@ public class ControladorTienda extends Productos {
 
     @FXML
     public void guardarHistorialEnArchivo() {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Seleccionar Carpeta para Guardar el Historial");
-        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        try {
+            File carpetaPaquete = new File("src/ArchivoTexto");
+            if (!carpetaPaquete.exists()) {
+                carpetaPaquete.mkdirs();
+            }
+            File archivoPaquete = new File(carpetaPaquete, "historial_compras.txt");
 
-        Stage stage = (Stage) ScrollPaneCarrito.getScene().getWindow();
-        File selectedDirectory = directoryChooser.showDialog(stage);
-
-        if (selectedDirectory != null) {
-            String rutaCompleta = selectedDirectory.getAbsolutePath() + "/historial_compras.txt";
-
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaCompleta, true))) {
-                // Obtener la lista de carrito del controlador correcto
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoPaquete, true))) {
                 ControladorTienda controlador = (ControladorPrincipal != null) ? ControladorPrincipal : this;
                 Nodo<Producto> actual = controlador.cabezaCarrito;
 
                 writer.write("\n=== NUEVA ENTRADA === " + new Date() + "\n\n");
 
-                // Verificar si el carrito está vacío
                 if (actual == null) {
                     writer.write("El carrito estaba vacío\n");
                 } else {
-                    // Escribir cada producto
                     while (actual != null) {
-                        if (actual.dato != null) {  // Verificación de nulo importante
+                        if (actual.dato != null) {
                             writer.write(String.format(
                                     "Producto: %s | Cantidad: %d | Precio: $%,.2f | Total: $%,.2f\n",
                                     actual.dato.nombre,
@@ -936,23 +930,114 @@ public class ControladorTienda extends Productos {
                     }
                 }
 
-                // Escribir el total
+                double total = controlador.calcularTotal();
+                writer.write(String.format("\nSUBTOTAL: $%,.2f\n", total));
+                writer.write("====================================\n");
+            }
+            Platform.runLater(() -> {
+                new Alert(Alert.AlertType.INFORMATION,
+                        "Historial actualizado en el archivo dentro del proyecto:\n" + archivoPaquete.getAbsolutePath()
+                ).showAndWait();
+            });
+
+        } catch (IOException e) {
+            Platform.runLater(() -> {
+                new Alert(Alert.AlertType.ERROR,
+                        "Error al guardar el archivo dentro del proyecto: " + e.getMessage()
+                ).show();
+            });
+        }
+
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Seleccionar Carpeta para Guardar el Historial");
+        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+
+        Stage stage = (Stage) ScrollPaneCarrito.getScene().getWindow();
+        File selectedDirectory = directoryChooser.showDialog(stage);
+
+        if (selectedDirectory != null) {
+            String rutaCompleta = selectedDirectory.getAbsolutePath() + "/historial_compras.txt";
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaCompleta, true))) {
+                ControladorTienda controlador = (ControladorPrincipal != null) ? ControladorPrincipal : this;
+                Nodo<Producto> actual = controlador.cabezaCarrito;
+
+                writer.write("\n=== NUEVA ENTRADA === " + new Date() + "\n\n");
+
+                if (actual == null) {
+                    writer.write("El carrito estaba vacío\n");
+                } else {
+                    while (actual != null) {
+                        if (actual.dato != null) {
+                            writer.write(String.format(
+                                    "Producto: %s | Cantidad: %d | Precio: $%,.2f | Total: $%,.2f\n",
+                                    actual.dato.nombre,
+                                    actual.cantidad,
+                                    actual.dato.precio,
+                                    actual.dato.precio * actual.cantidad
+                            ));
+                        }
+                        actual = actual.sig;
+                    }
+                }
+
                 double total = controlador.calcularTotal();
                 writer.write(String.format("\nSUBTOTAL: $%,.2f\n", total));
                 writer.write("====================================\n");
 
-                // Mostrar alerta
                 Platform.runLater(() -> {
                     new Alert(Alert.AlertType.INFORMATION,
-                            "Historial actualizado en:\n" + rutaCompleta).showAndWait();
+                            "Historial actualizado en:\n" + rutaCompleta
+                    ).showAndWait();
                 });
-
             } catch (IOException e) {
                 Platform.runLater(() -> {
                     new Alert(Alert.AlertType.ERROR,
-                            "Error al guardar: " + e.getMessage()).show();
+                            "Error al guardar: " + e.getMessage()
+                    ).show();
                 });
             }
+        }
+    }
+
+    @FXML
+    public void guardarHistorialProducto(Producto producto) {
+        if (producto == null) {
+            Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "Producto inválido.").show());
+            return;
+        }
+
+        try {
+            File carpeta = new File("src/ArchivoTexto");
+            if (!carpeta.exists()) {
+                carpeta.mkdirs();
+            }
+
+            File archivo = new File(carpeta, "historial_compras.txt");
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, true))) {
+                writer.write("\n=== NUEVA ENTRADA === " + new Date() + "\n\n");
+                writer.write(String.format(
+                        "Producto: %s | Descripción: %s | Precio: $%,.2f\n",
+                        producto.nombre,
+                        producto.descripcion,
+                        producto.precio
+                ));
+                writer.write("====================================\n");
+            }
+
+            Platform.runLater(() -> {
+                new Alert(Alert.AlertType.INFORMATION,
+                        "Historial actualizado en el archivo dentro del proyecto:\n" + archivo.getAbsolutePath()
+                ).showAndWait();
+            });
+
+        } catch (IOException e) {
+            Platform.runLater(() -> {
+                new Alert(Alert.AlertType.ERROR,
+                        "Error al guardar el archivo: " + e.getMessage()
+                ).show();
+            });
         }
     }
 
@@ -1217,10 +1302,11 @@ public class ControladorTienda extends Productos {
         aplicarEfecto(btnAnilloFlowers);
         aplicarEfecto(btnPulseraDestello);
         aplicarEfecto(btnCollarPearl);
-       
+
         aplicarEfecto(btnMenu);
         aplicarEfecto(btnDeseos);
         aplicarEfecto(btnCarrito);
+
     }
 
     public void aplicarEfecto(Button boton) {
@@ -1254,6 +1340,7 @@ public class ControladorTienda extends Productos {
             boton.setStyle(estiloOriginal);
         });
     }
+
 
     public void setImagenFavorito(ToggleButton toggleButton, Image imagen) {
         if (toggleButton == null) {
@@ -1325,21 +1412,291 @@ public class ControladorTienda extends Productos {
         cambiarEscena(event, "/Vista/Productos_pg4.fxml");
     }
 
-    /*
+    //-----------------Comprar Ahora------------------//
     @FXML
-    public void cerrarSesion(ActionEvent event) throws IOException {
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/login.fxml"));
-        Parent root = loader.load();
+    public void mostrarYComprarProducto(Producto producto) {
+        String estiloCampos = "-fx-font-size: 16px; -fx-background-color: #f0f0f0; -fx-text-fill: black; "
+                + "-fx-border-color: #ccc; -fx-border-radius: 5px; -fx-background-radius: 5px;";
 
-        ControladorLogin controladorLogin = loader.getController();
-        controladorLogin.setPilaUsuarios(this.pilaUsuarios);
+        Label lblNombreTitular = new Label("Nombre del Titular:");
+        TextField campoNombreTitular = new TextField();
+        campoNombreTitular.setPromptText("Ingrese el nombre del titular");
+        campoNombreTitular.setStyle(estiloCampos);
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }*/
+        Label lblNumeroTarjeta = new Label("Número de Tarjeta:");
+        TextField campoNumeroTarjeta = new TextField();
+        campoNumeroTarjeta.setPromptText("Ingrese el número de tarjeta");
+        campoNumeroTarjeta.setStyle(estiloCampos);
+
+        Label lblFechaVencimiento = new Label("Fecha de expiracion:");
+        ComboBox<String> comboMes = new ComboBox<>();
+        comboMes.setPromptText("Mes");
+        comboMes.getItems().addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+        comboMes.setStyle(estiloCampos);
+
+        ComboBox<String> comboAnio = new ComboBox<>();
+        comboAnio.setPromptText("Año");
+        int anioActual = LocalDate.now().getYear();
+        for (int i = 0; i < 10; i++) {
+            comboAnio.getItems().add(String.valueOf(anioActual + i));
+        }
+        comboAnio.setStyle(estiloCampos);
+
+        HBox boxVencimiento = new HBox(10, comboMes, comboAnio);
+        boxVencimiento.setAlignment(Pos.CENTER_LEFT);
+
+        Label lblCVV = new Label("CVV:");
+        TextField campoCVV = new TextField();
+        campoCVV.setPromptText("Ingrese el CVV");
+        campoCVV.setStyle(estiloCampos);
+
+        Label lblDireccion = new Label("Dirección de Envío:");
+        TextField campoDireccion = new TextField();
+        campoDireccion.setPromptText("Ingrese la dirección de envío");
+        campoDireccion.setStyle(estiloCampos);
+
+        Button btnPagar = new Button("Pagar");
+        btnPagar.setStyle("-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white; "
+                + "-fx-background-radius: 5px; -fx-border-color: #388E3C; -fx-border-radius: 5px;");
+        btnPagar.setOnMouseEntered(e -> btnPagar.setEffect(new DropShadow(10, Color.LIME)));
+        btnPagar.setOnMouseExited(e -> btnPagar.setEffect(null));
+
+        btnPagar.setOnAction(e -> {
+            if (campoNombreTitular.getText().isEmpty() || campoNumeroTarjeta.getText().isEmpty()
+                    || comboMes.getValue() == null || comboAnio.getValue() == null
+                    || campoCVV.getText().isEmpty() || campoDireccion.getText().isEmpty()) {
+                Alert alerta = new Alert(Alert.AlertType.WARNING);
+                alerta.setTitle("Campos incompletos");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Por favor, complete todos los campos.");
+                alerta.showAndWait();
+                return;
+            }
+
+            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmacion.setTitle("Confirmar Pago");
+            confirmacion.setHeaderText(null);
+            confirmacion.setContentText("¿Desea confirmar el pago?");
+            Optional<ButtonType> resultado = confirmacion.showAndWait();
+
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                if (producto != null) {
+                    añadirHistorial(producto);
+
+                }
+
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("Pago realizado");
+                alerta.setHeaderText(null);
+                alerta.setContentText("¡Gracias por tu compra!");
+                alerta.showAndWait();
+
+                ((Stage) btnPagar.getScene().getWindow()).close();
+            }
+        });
+
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(20));
+        layout.setAlignment(Pos.CENTER_LEFT);
+        layout.setStyle("-fx-background-color: white;");
+        layout.getChildren().addAll(
+                lblNombreTitular, campoNombreTitular,
+                lblNumeroTarjeta, campoNumeroTarjeta,
+                lblFechaVencimiento, boxVencimiento,
+                lblCVV, campoCVV,
+                lblDireccion, campoDireccion,
+                btnPagar
+        );
+
+        Scene escena = new Scene(layout, 400, 500);
+        Stage ventanaPago = new Stage();
+        ventanaPago.setTitle("Formulario de Pago");
+        ventanaPago.setScene(escena);
+        ventanaPago.initModality(Modality.APPLICATION_MODAL);
+        ventanaPago.show();
+    }
+
+    @FXML
+    public void ComprarAnilloRoyalStar() {
+        mostrarYComprarProducto(AnilloRoyalStar);
+        guardarHistorialProducto(AnilloRoyalStar);
+    }
+
+    @FXML
+    public void ComprarPulseraCrazy() {
+        mostrarYComprarProducto(PulseraCrazy);
+    }
+
+    @FXML
+    public void ComprarAretesNudoGold() {
+        mostrarYComprarProducto(AretesNudoGold);
+    }
+
+    @FXML
+    public void ComprarCadenaItaliana() {
+        mostrarYComprarProducto(CadenaItaliana);
+    }
+
+    @FXML
+    public void ComprarCollarGalaxy() {
+        mostrarYComprarProducto(CollarGalaxy);
+    }
+
+    @FXML
+    public void ComprarPulseraVanCleef() {
+        mostrarYComprarProducto(PulseraVanCleef);
+    }
+
+    @FXML
+    public void ComprarDijeMar() {
+        mostrarYComprarProducto(DijeMar);
+    }
+
+    @FXML
+    public void ComprarRelojConquest() {
+        mostrarYComprarProducto(RelojConquest);
+    }
+
+    @FXML
+    public void ComprarDijeOsoPanda() {
+        mostrarYComprarProducto(DijeOsoPanda);
+    }
+
+    @FXML
+    public void ComprarAnilloChaosDouble() {
+        mostrarYComprarProducto(AnilloChaosDouble);
+    }
+
+    @FXML
+    public void ComprarCollarFinobolit() {
+        mostrarYComprarProducto(CollarFinobolit);
+    }
+
+    @FXML
+    public void ComprarAretescelestial() {
+        mostrarYComprarProducto(Aretescelestial);
+    }
+
+    @FXML
+    public void ComprarCadenaEsclava() {
+        mostrarYComprarProducto(CadenaEsclava);
+    }
+
+    @FXML
+    public void ComprarPulseraArrastrada() {
+        mostrarYComprarProducto(PulseraArrastrada);
+    }
+
+    @FXML
+    public void ComprarPulserasCombLuxury() {
+        mostrarYComprarProducto(PulserasCombLuxury);
+    }
+
+    @FXML
+    public void ComprarRelojTissot() {
+        mostrarYComprarProducto(RelojTissot);
+    }
+
+    @FXML
+    public void ComprarComboAretesSweet() {
+        mostrarYComprarProducto(ComboAretesSweet);
+    }
+
+    @FXML
+    public void ComprarDijeOsito() {
+        mostrarYComprarProducto(DijeOsito);
+    }
+
+    @FXML
+    public void ComprarAnilloGoldenLuz() {
+        mostrarYComprarProducto(AnilloGoldenLuz);
+    }
+
+    @FXML
+    public void ComprarDijeToyota() {
+        mostrarYComprarProducto(DijeToyota);
+    }
+
+    @FXML
+    public void ComprarRelojDolceVita() {
+        mostrarYComprarProducto(RelojDolceVita);
+    }
+
+    @FXML
+    public void ComprarCadenaGold() {
+        mostrarYComprarProducto(CadenaGold);
+    }
+
+    @FXML
+    public void ComprarAnilloGoldenNature() {
+        mostrarYComprarProducto(AnilloGoldenNature);
+    }
+
+    @FXML
+    public void ComprarCollarRama() {
+        mostrarYComprarProducto(CollarRama);
+    }
+
+    @FXML
+    public void ComprarAretesCoquet() {
+        mostrarYComprarProducto(AretesCoquet);
+    }
+
+    @FXML
+    public void ComprarCollarPlataMain() {
+        mostrarYComprarProducto(CollarPlataMain);
+    }
+
+    @FXML
+    public void ComprarRelojLadyAutomatic() {
+        mostrarYComprarProducto(RelojLadyAutomatic);
+    }
+
+    @FXML
+    public void ComprarCollarCrisFlower() {
+        mostrarYComprarProducto(CollarCrisFlower);
+    }
+
+    @FXML
+    public void ComprarDijeOsitoenPie() {
+        mostrarYComprarProducto(DijeOsitoenPie);
+    }
+
+    @FXML
+    public void ComprarAnilloGreenPow() {
+        mostrarYComprarProducto(AnilloGreenPow);
+    }
+
+    @FXML
+    public void ComprarCollarLuzFugaz() {
+        mostrarYComprarProducto(CollarLuzFugaz);
+    }
+
+    @FXML
+    public void ComprarAretesBoldHuggies() {
+        mostrarYComprarProducto(AretesBoldHuggies);
+    }
+
+    @FXML
+    public void ComprarCadenaSingapur() {
+        mostrarYComprarProducto(CadenaSingapur);
+    }
+
+    @FXML
+    public void ComprarAnilloFlowers() {
+        mostrarYComprarProducto(AnilloFlowers);
+    }
+
+    @FXML
+    public void ComprarPulseraDestello() {
+        mostrarYComprarProducto(PulseraDestello);
+    }
+
+    @FXML
+    public void ComprarCollarPearl() {
+        mostrarYComprarProducto(CollarPearl);
+    }
+
     public void AnilloRoyalStar() {
         añadirCarrito(AnilloRoyalStar);
     }

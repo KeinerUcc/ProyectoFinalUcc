@@ -30,5 +30,6 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <Button layoutX="570.0" layoutY="245.0" mnemonicParsing="false" onAction="#recuperarCuenta" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: transparent;" />
    </children>
 </AnchorPane>

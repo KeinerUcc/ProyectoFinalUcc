@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="250" prefWidth="400" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Controlador.ControladorLogin">
+    <children>
+        <VBox alignment="CENTER" layoutX="50" layoutY="50" prefWidth="300" spacing="15.0">
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Recuperar contraseña" />
+            <Label text="Ingrese su correo electrónico" />
+            <TextField fx:id="correoRecuperacion" prefWidth="250" promptText="correo@example.com" />
+            <Button onAction="#enviarCodigoRecuperacion" prefWidth="200" text="Enviar código de verificación" />
+        </VBox>
+    </children>
+</AnchorPane>

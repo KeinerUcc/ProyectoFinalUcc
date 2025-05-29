@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1800.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorTienda">
   <content>
     <AnchorPane fx:id="panePrincipal1" minHeight="0.0" minWidth="0.0" prefHeight="1700.0" prefWidth="0.0">
          <children>
@@ -180,6 +180,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="btnComprarAnilloRoyalStar" layoutX="55.0" layoutY="750.0" mnemonicParsing="false" onAction="#ComprarAnilloRoyalStar" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #634A2C;" text="COMPRAR AHORA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             <Pane fx:id="PaneCarrito" layoutX="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="466.0" style="-fx-background-color: black;" visible="false">
                <children>
                   <ImageView fitHeight="75.0" fitWidth="395.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -241,6 +249,70 @@
                   </AnchorPane>
                </children>
             </Pane>
+            <Button fx:id="btnComprarPulseraCrazy" layoutX="302.0" layoutY="751.0" mnemonicParsing="false" onAction="#ComprarPulseraCrazy" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #634A2C;" text="COMPRAR AHORA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnComprarAretesNudoGold" layoutX="549.0" layoutY="750.0" mnemonicParsing="false" onAction="#ComprarAretesNudoGold" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #634A2C;" text="COMPRAR AHORA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnComprarPulseraVanCleef" layoutX="549.0" layoutY="1159.0" mnemonicParsing="false" onAction="#ComprarPulseraVanCleef" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #634A2C;" text="COMPRAR AHORA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnComprarCollarGalaxy" layoutX="302.0" layoutY="1155.0" mnemonicParsing="false" onAction="#ComprarCollarGalaxy" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #634A2C;" text="COMPRAR AHORA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnComprarCadenaItaliana" layoutX="55.0" layoutY="1156.0" mnemonicParsing="false" onAction="#ComprarCadenaItaliana" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #634A2C;" text="COMPRAR AHORA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnComprarDijeMar" layoutX="54.0" layoutY="1561.0" mnemonicParsing="false" onAction="#ComprarDijeMar" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #634A2C;" text="COMPRAR AHORA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnComprarRelojConquest" layoutX="302.0" layoutY="1561.0" mnemonicParsing="false" onAction="#ComprarRelojConquest" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #634A2C;" text="COMPRAR AHORA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnComprarDijeOsoPanda" layoutX="550.0" layoutY="1565.0" mnemonicParsing="false" onAction="#ComprarDijeOsoPanda" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #634A2C;" text="COMPRAR AHORA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children></AnchorPane>
   </content>
 </ScrollPane>
