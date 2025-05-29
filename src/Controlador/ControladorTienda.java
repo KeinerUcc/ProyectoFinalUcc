@@ -1000,13 +1000,13 @@ public class ControladorTienda extends Productos {
         }
     }
 
+    //Pa productos de comprarAhora
     @FXML
     public void guardarHistorialProducto(Producto producto) {
         if (producto == null) {
             Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "Producto inválido.").show());
             return;
         }
-
         try {
             File carpeta = new File("src/ArchivoTexto");
             if (!carpeta.exists()) {
@@ -1341,7 +1341,6 @@ public class ControladorTienda extends Productos {
         });
     }
 
-
     public void setImagenFavorito(ToggleButton toggleButton, Image imagen) {
         if (toggleButton == null) {
             return;
@@ -1412,7 +1411,7 @@ public class ControladorTienda extends Productos {
         cambiarEscena(event, "/Vista/Productos_pg4.fxml");
     }
 
-    //-----------------Comprar Ahora------------------//
+    //-----------------pa comrpar ahora------------------//
     @FXML
     public void mostrarYComprarProducto(Producto producto) {
         String estiloCampos = "-fx-font-size: 16px; -fx-background-color: #f0f0f0; -fx-text-fill: black; "
@@ -1482,9 +1481,9 @@ public class ControladorTienda extends Productos {
             if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
                 if (producto != null) {
                     añadirHistorial(producto);
+                    guardarHistorialProducto(producto);
 
                 }
-
                 Alert alerta = new Alert(Alert.AlertType.INFORMATION);
                 alerta.setTitle("Pago realizado");
                 alerta.setHeaderText(null);
@@ -1519,7 +1518,6 @@ public class ControladorTienda extends Productos {
     @FXML
     public void ComprarAnilloRoyalStar() {
         mostrarYComprarProducto(AnilloRoyalStar);
-        guardarHistorialProducto(AnilloRoyalStar);
     }
 
     @FXML
@@ -1697,6 +1695,7 @@ public class ControladorTienda extends Productos {
         mostrarYComprarProducto(CollarPearl);
     }
 
+    //--------------------Pal carrito----------------------//
     public void AnilloRoyalStar() {
         añadirCarrito(AnilloRoyalStar);
     }
@@ -2028,6 +2027,16 @@ public class ControladorTienda extends Productos {
     @FXML
     public void añadirFavCollarPearl() {
         añadirFav(btnFavCollarPearl, CollarPearl);
+    }
+
+    @FXML
+    public void cerrarSesion(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/login.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

@@ -24,3 +24,25 @@ Producto: Dije osito en pie | Cantidad: 1 | Precio: $35.000,00 | Total: $35.000,
 
 SUBTOTAL: $35.000,00
 ====================================
+
+=== NUEVA ENTRADA === Wed May 28 20:37:08 GMT-05:00 2025
+
+Producto: Pulsera destello | Descripción: Pulsera con dije colgante de piedra blanca nacarada, en baño de acero inoxidable.  | Precio: $325.000,00
+====================================
+
+=== NUEVA ENTRADA === Wed May 28 20:43:37 GMT-05:00 2025
+
+Producto: Collar pearl | Descripción: Collar con perlas artificiales enlazadas en cadena dorada, con un dije en forma de flor.  | Precio: $35.000,00
+====================================
+
+=== NUEVA ENTRADA === Wed May 28 20:54:00 GMT-05:00 2025
+
+Producto: Pulsera Van Cleef | Cantidad: 1 | Precio: $110.000,00 | Total: $110.000,00
+Producto: Collar Galaxy | Cantidad: 1 | Precio: $60.000,00 | Total: $60.000,00
+Producto: Cadena Italiana | Cantidad: 1 | Precio: $55.000,00 | Total: $55.000,00
+Producto: Anillo Royal Star | Cantidad: 1 | Precio: $25.000,00 | Total: $25.000,00
+Producto: Pulsera Crazy | Cantidad: 1 | Precio: $25.000,00 | Total: $25.000,00
+Producto: Aretes Nudo Gold | Cantidad: 1 | Precio: $25.000,00 | Total: $25.000,00
+
+SUBTOTAL: $300.000,00
+====================================

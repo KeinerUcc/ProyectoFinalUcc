@@ -138,7 +138,7 @@ public class PilaUsuarios {
                     Nodo<Usuario> temp = tope;
                     do {
                         Usuario u = temp.dato;
-                        writer.write(u.user + "," + u.contra + "," + u.nombre + "," + u.correo);
+                        writer.write(u.user+","+u.contra+","+u.nombre+","+ u.correo);
                         writer.newLine();
                         temp = temp.sig;
                     } while (temp != tope);
